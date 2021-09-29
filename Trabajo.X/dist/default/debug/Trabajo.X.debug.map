@@ -115,9 +115,9 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x376           0x531  (1329)
 .text                        0x576               0x21a           0x327  (807)
-.dinit                       0x790                0x3e            0x5d  (93)
+.dinit                       0x790                0x20            0x30  (48)
 
-                 Total "program" memory used (bytes):          0x8b5  (2229) 3%
+                 Total "program" memory used (bytes):          0x888  (2184) 3%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -125,14 +125,9 @@ section                    address   length (PC units)   length (bytes) (dec)
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
 .nbss                        0x800                   0            0x10  (16)
-.bss                         0x810                   0             0x8  (8)
-.xbss                        0xa00                   0           0x200  (512)
-.bss                         0xc00                   0           0xd1c  (3356)
-_0000000005BFCB406153c43c    0x4000                   0           0x400  (1024)
-_0000000005BFCE606153c43c    0x4400                   0           0x200  (512)
-_0000000005BFCF006153c43c    0x4600                   0           0x200  (512)
+.bss                         0x810                   0           0xc00  (3072)
 
-                 Total "data" memory used (bytes):         0x1734  (5940) 36%
+                 Total "data" memory used (bytes):          0xc10  (3088) 18%
 
 
 Dynamic Memory Usage
@@ -140,9 +135,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                       0x191c                              0x26e4  (9956)
+stack                       0x1410                              0x33f0  (13296)
 
-                 Maximum dynamic memory (bytes):         0x26e4  (9956)
+                 Maximum dynamic memory (bytes):         0x33f0  (13296)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
@@ -156,39 +151,23 @@ External Symbols in Data Memory (by address):
                     0x0808                  _procesar
                     0x080a                  _contPruebas
                     0x080c                  _var
-                    0x0810                  _buffer
-                    0x0a00                  _twiddleFactors
-                    0x0c00                  _valCH0Float
-                    0x1000                  _valCH1Float
-                    0x1400                  _output
-                    0x1500                  _valCH0
-                    0x1700                  _valCH1
-                    0x1900                  _Filter_Re
-                    0x190e                  _CPLXFilter_Im
-                    0x4000                  _sigCmpx
-                    0x4400                  _Re_coeff
-                    0x4600                  _delay_Re
+                    0x0810                  _valCH0Float
+                    0x0c10                  _valCH1Float
+                    0x1010                  _valCH0
+                    0x1210                  _valCH1
 
 External Symbols in Data Memory (by name):
 
-                    0x190e                  _CPLXFilter_Im
-                    0x1900                  _Filter_Re
-                    0x4400                  _Re_coeff
                     0x0804                  _adCH
-                    0x0810                  _buffer
                     0x0806                  _chptr
                     0x0800                  _contCH0
                     0x0802                  _contCH1
                     0x080a                  _contPruebas
-                    0x4600                  _delay_Re
-                    0x1400                  _output
                     0x0808                  _procesar
-                    0x4000                  _sigCmpx
-                    0x0a00                  _twiddleFactors
-                    0x1500                  _valCH0
-                    0x0c00                  _valCH0Float
-                    0x1700                  _valCH1
-                    0x1000                  _valCH1Float
+                    0x1010                  _valCH0
+                    0x0810                  _valCH0Float
+                    0x1210                  _valCH1
+                    0x0c10                  _valCH1Float
                     0x080c                  _var
 
 External Symbols in Program Memory (by address):
@@ -384,17 +363,17 @@ usercode
 
 __FBS             0xf80000          0x2
  *(__FBS.sec*)
- __FBS.sec        0xf80000          0x2 /CW/_FBSPõõ
+ __FBS.sec        0xf80000          0x2 /CW/_FBS îù
                   0xf80000                  __FBS.sec
 
 __FSS             0xf80002          0x2
  *(__FSS.sec*)
- __FSS.sec        0xf80002          0x2 /CW/_FSS@åõ
+ __FSS.sec        0xf80002          0x2 /CW/_FSS
                   0xf80002                  __FSS.sec
 
 __FGS             0xf80004          0x2
  *(__FGS.sec*)
- __FGS.sec        0xf80004          0x2 /CW/_FGS Åõ
+ __FGS.sec        0xf80004          0x2 /CW/_FGSð>ú
                   0xf80004                  __FGS.sec
 
 __FOSCSEL
@@ -427,27 +406,27 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x30d9
+.debug_info       0x000000       0x2eb2
  *(.debug_info)
- .debug_info      0x000000        0xbfb build/default/debug/principal.o
- .debug_info      0x000bfb       0x14e3 build/default/debug/perifericos.o
- .debug_info      0x0020de        0xd16 build/default/debug/interrupciones.o
- .debug_info      0x002df4        0x2e5 build/default/debug/procesamiento.o
+ .debug_info      0x000000        0xa86 build/default/debug/principal.o
+ .debug_info      0x000a86       0x14e3 build/default/debug/perifericos.o
+ .debug_info      0x001f69        0xcf1 build/default/debug/interrupciones.o
+ .debug_info      0x002c5a        0x258 build/default/debug/procesamiento.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x40f
+.debug_abbrev     0x000000        0x3c8
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x151 build/default/debug/principal.o
- .debug_abbrev    0x000151         0xc5 build/default/debug/perifericos.o
- .debug_abbrev    0x000216        0x113 build/default/debug/interrupciones.o
- .debug_abbrev    0x000329         0xe6 build/default/debug/procesamiento.o
+ .debug_abbrev    0x000000        0x126 build/default/debug/principal.o
+ .debug_abbrev    0x000126         0xc5 build/default/debug/perifericos.o
+ .debug_abbrev    0x0001eb        0x113 build/default/debug/interrupciones.o
+ .debug_abbrev    0x0002fe         0xca build/default/debug/procesamiento.o
 
-.debug_line       0x000000        0x4e3
+.debug_line       0x000000        0x4e2
  *(.debug_line)
- .debug_line      0x000000        0x174 build/default/debug/principal.o
- .debug_line      0x000174        0x137 build/default/debug/perifericos.o
- .debug_line      0x0002ab        0x18e build/default/debug/interrupciones.o
- .debug_line      0x000439         0xaa build/default/debug/procesamiento.o
+ .debug_line      0x000000        0x173 build/default/debug/principal.o
+ .debug_line      0x000173        0x137 build/default/debug/perifericos.o
+ .debug_line      0x0002aa        0x18e build/default/debug/interrupciones.o
+ .debug_line      0x000438         0xaa build/default/debug/procesamiento.o
 
 .debug_frame      0x000000        0x1c8
  *(.debug_frame)
@@ -470,16 +449,16 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x214
+                  0x000000        0x1a5
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x94 build/default/debug/principal.o
+                  0x000000         0x4e build/default/debug/principal.o
  .debug_pubnames
-                  0x000094         0x70 build/default/debug/perifericos.o
+                  0x00004e         0x70 build/default/debug/perifericos.o
  .debug_pubnames
-                  0x000104         0x90 build/default/debug/interrupciones.o
+                  0x0000be         0x85 build/default/debug/interrupciones.o
  .debug_pubnames
-                  0x000194         0x80 build/default/debug/procesamiento.o
+                  0x000143         0x62 build/default/debug/procesamiento.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1465,53 +1444,53 @@ LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
 OUTPUT(dist/default/debug/Trabajo.X.debug.elf elf32-pic30)
-LOAD /CW/_FGS Åõ
-LOAD /CW/_FSS@åõ
-LOAD /CW/_FBSPõõ
+LOAD /CW/_FGSð>ú
+LOAD /CW/_FSS
+LOAD /CW/_FBS îù
 LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000060        0x39d
+                  0x000060        0x36d
  .debug_pubtypes
-                  0x000060         0xe8 build/default/debug/principal.o
+                  0x000060         0xc9 build/default/debug/principal.o
  .debug_pubtypes
-                  0x000148        0x1a1 build/default/debug/perifericos.o
+                  0x000129        0x1a1 build/default/debug/perifericos.o
  .debug_pubtypes
-                  0x0002e9         0xe2 build/default/debug/interrupciones.o
+                  0x0002ca         0xe2 build/default/debug/interrupciones.o
  .debug_pubtypes
-                  0x0003cb         0x32 build/default/debug/procesamiento.o
+                  0x0003ac         0x21 build/default/debug/procesamiento.o
 
 __c30_signature
-                  0x0003fd         0x54
+                  0x0003cd         0x54
  __c30_signature
-                  0x0003fd          0x6 build/default/debug/principal.o
+                  0x0003cd          0x6 build/default/debug/principal.o
  __c30_signature
-                  0x000403          0x6 build/default/debug/perifericos.o
+                  0x0003d3          0x6 build/default/debug/perifericos.o
  __c30_signature
-                  0x000409          0x6 build/default/debug/interrupciones.o
+                  0x0003d9          0x6 build/default/debug/interrupciones.o
  __c30_signature
-                  0x00040f          0x6 build/default/debug/procesamiento.o
+                  0x0003df          0x6 build/default/debug/procesamiento.o
  __c30_signature
-                  0x000415          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
+                  0x0003e5          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x00041b          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
+                  0x0003eb          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
  __c30_signature
-                  0x000421          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
+                  0x0003f1          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
  __c30_signature
-                  0x000427          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
+                  0x0003f7          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
  __c30_signature
-                  0x00042d          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
+                  0x0003fd          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
  __c30_signature
-                  0x000433          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
+                  0x000403          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
  __c30_signature
-                  0x000439          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(fpack.eo)
+                  0x000409          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(fpack.eo)
  __c30_signature
-                  0x00043f          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(funpack2.eo)
+                  0x00040f          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(funpack2.eo)
  __c30_signature
-                  0x000445          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(futil.eo)
+                  0x000415          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(futil.eo)
  __c30_signature
-                  0x00044b          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(funpack.eo)
+                  0x00041b          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(funpack.eo)
 
 .nbss               0x0800         0x10
  .nbss              0x0800          0x8 build/default/debug/interrupciones.o
@@ -1525,42 +1504,13 @@ __c30_signature
  .nbss              0x080c          0x4 build/default/debug/procesamiento.o
                     0x080c                  _var
 
-.xbss               0x0a00        0x200
- .xbss              0x0a00        0x200 build/default/debug/procesamiento.o
-                    0x0a00                  _twiddleFactors
-
-_0000000005BFCB406153c43c
-                    0x4000        0x400
- _0000000005BFCB406153c43c
-                    0x4000        0x400 build/default/debug/principal.o
-                    0x4000                  _sigCmpx
-
-_0000000005BFCE606153c43c
-                    0x4400        0x200
- _0000000005BFCE606153c43c
-                    0x4400        0x200 build/default/debug/principal.o
-                    0x4400                  _Re_coeff
-
-_0000000005BFCF006153c43c
-                    0x4600        0x200
- _0000000005BFCF006153c43c
-                    0x4600        0x200 build/default/debug/principal.o
-                    0x4600                  _delay_Re
-
-.bss                0x0c00        0xd1c
- .bss               0x0c00        0x900 build/default/debug/procesamiento.o
-                    0x0c00                  _valCH0Float
-                    0x1000                  _valCH1Float
-                    0x1400                  _output
- .bss               0x1500        0x41c build/default/debug/principal.o
-                    0x1500                  _valCH0
-                    0x1700                  _valCH1
-                    0x1900                  _Filter_Re
-                    0x190e                  _CPLXFilter_Im
-
-.bss                0x0810          0x8
- .bss               0x0810          0x8 build/default/debug/interrupciones.o
-                    0x0810                  _buffer
+.bss                0x0810        0xc00
+ .bss               0x0810        0x800 build/default/debug/procesamiento.o
+                    0x0810                  _valCH0Float
+                    0x0c10                  _valCH1Float
+ .bss               0x1010        0x400 build/default/debug/principal.o
+                    0x1010                  _valCH0
+                    0x1210                  _valCH1
 
 .config_JTAGEN    0xf8000e          0x2
  .config_JTAGEN
@@ -1614,5 +1564,5 @@ _0000000005BFCF006153c43c
  .text            0x000710         0x80 build/default/debug/principal.o
                   0x000710                  _main
 
-.dinit            0x000790         0x3e
- .dinit           0x000790         0x3e data_init
+.dinit            0x000790         0x20
+ .dinit           0x000790         0x20 data_init

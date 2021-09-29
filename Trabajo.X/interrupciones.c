@@ -8,7 +8,6 @@ char adCH = 0;
 extern fractional valCH0[SAMPLES], valCH1[SAMPLES];
 extern int procesar;
 extern int contPruebas;
-char buffer[8];
 extern float valCH0Float[SAMPLES], valCH1Float[SAMPLES];
 unsigned char *chptr;
 

@@ -1,22 +1,10 @@
 #include <xc.h>
 #include <dsp.h>
 #include "defs.h"
-
-extern fractcomplex sigCmpx[FFT_BLOCK_LENGTH]
-__attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
-
- #ifndef FFTTWIDCOEFFS_IN_PROGMEM
- fractcomplex twiddleFactors[FFT_BLOCK_LENGTH/2] 	
- __attribute__ ((section (".xbss, bss, xmemory"), aligned (FFT_BLOCK_LENGTH*2)));
- #else
- extern const fractcomplex twiddleFactors[FFT_BLOCK_LENGTH/2]	/* Twiddle Factor array in Program memory */
- __attribute__ ((space(prog), aligned (FFT_BLOCK_LENGTH*2)));
- #endif
  
 extern fractional valCH0[SAMPLES], valCH1[SAMPLES];
 float valCH0Float[SAMPLES], valCH1Float[SAMPLES];
 
-fractional output[FFT_BLOCK_LENGTH/2];
 float var;
 
 void procesarMuestras( )
@@ -76,4 +64,8 @@ void convertirDatos(char canal)
             
         }
     }
+}
+void procesarEPOC( void )
+{
+    return;
 }

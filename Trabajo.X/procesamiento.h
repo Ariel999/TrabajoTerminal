@@ -20,5 +20,6 @@ extern "C" {
 #endif
 void procesarMuestras( );
 void convertirDatos(char canal);
+void procesarEPOC( void );
 #endif	/* PROCESAMIENTO_H */
 
