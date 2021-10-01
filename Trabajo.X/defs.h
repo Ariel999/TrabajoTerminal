@@ -1,7 +1,7 @@
 #ifndef DEFS_H
 #define DEFS_H
 
-#define SAMPLES 256
+#define MUESTRAS 256
 #define LOG2_BLOCK_LENGTH 8
 #define FFT_BLOCK_LENGTH 256
 

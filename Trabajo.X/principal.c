@@ -39,7 +39,7 @@
 #pragma config ICS = PGD2               // Comm Channel Select (Communicate on PGC2/EMUC2 and PGD2/EMUD2)
 #pragma config JTAGEN = OFF             // JTAG Port Enable (JTAG is Disabled)
 
-fractional valCH0[SAMPLES], valCH1[SAMPLES];
+fractional valCH0[MUESTRAS], valCH1[MUESTRAS];
 int procesar = 0;
 int contPruebas = 0;
 
@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
 	CLKDIVbits.PLLPRE = 0;          //N1=2
 	CLKDIVbits.PLLPOST = 0;         //N2=2
     //PLLFBDbits.PLLDIV = 0;          //M=2
-    PLLFBDbits.PLLDIV = 2;
+    PLLFBDbits.PLLDIV = 6;
     /*
      * FOSC = 7.37MHz * (2/(2*2)) = 3.685MHz
      * FCY = FOSC / 2 = 1.8425MHz
@@ -72,18 +72,33 @@ int main(int argc, char** argv) {
     iPPSOutput(OUT_PIN_PPS_RP0, OUT_FN_PPS_U1TX);
     PPSLock;
     //RPOR5bits.RP10R = 0x0003;
+    IEC0bits.AD1IE=0;
+    IEC0bits.T3IE=0;
+    
     while (1) 
     {
+        LATBbits.LATB7= ~LATBbits.LATB7;
+        procesarEPOC();
+        LATBbits.LATB7= ~LATBbits.LATB7;
+        IEC1bits.T5IE=1;
+        while(1)
+        {
+            Nop();
+        }
         if(procesar == 2)
         {
             //U1TXREG = valCH0[1];
             //U1TXREG = valCH0[1]>>8;
+            IEC0bits.AD1IE=0;
+            IEC0bits.T3IE=0;
+            
             convertirDatos(0);
             convertirDatos(1);
+            
+            procesarEPOC();
+            
             IEC1bits.T5IE=1;
             
-            IEC0bits.AD1IE=0;
-            IEC0bits.T3IE=0; 
             /*for( i = 0 ; i < SAMPLES ; i++)
             {
                 U1TXREG = valCH0[i];
@@ -92,7 +107,6 @@ int main(int argc, char** argv) {
             //procesarMuestras();
             procesar = 0;
         }
-        Nop();
     }
     return (EXIT_SUCCESS);
 }
