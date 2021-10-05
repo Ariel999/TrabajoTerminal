@@ -5,7 +5,12 @@
 
 int contCH0 = 0, contCH1 = 0;
 char adCH = 0;
-extern fractional valCH0[MUESTRAS], valCH1[MUESTRAS];
+
+extern fractcomplex valCH0[FFT_BLOCK_LENGTH]
+__attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
+
+extern fractional valCH1[MUESTRAS];
+//extern fractional valCH0[MUESTRAS], valCH1[MUESTRAS];
 extern int procesar;
 extern int contPruebas;
 extern float valCH0Float[MUESTRAS], valCH1Float[MUESTRAS];
@@ -18,13 +23,13 @@ void __attribute__((interrupt, no_auto_psv))_ADC1Interrupt(void){
         case 0:	
             if( contCH0 == MUESTRAS - 1 )
             {
-                valCH0[contCH0] = ADC1BUF0;
+                valCH0[contCH0].real = ADC1BUF0;
                 procesar++;
                 contCH0 = 0;
             }
             else
             {
-                valCH0[contCH0++] = ADC1BUF0;
+                valCH0[contCH0++].real = ADC1BUF0;
             }
 			break;
 
@@ -66,16 +71,9 @@ void __attribute__((interrupt, no_auto_psv))_T5Interrupt(void)
         //chptr = (unsigned char *) &valCH0Float[contPruebas];
         chptr = (unsigned char *) &epochs[contPruebas];
         
-        //while(IFS0bits.U1TXIF != 0);
         U1TXREG = *chptr++;
-        
-        //while(IFS0bits.U1TXIF != 0);
         U1TXREG = *chptr++;
-        
-        //while(IFS0bits.U1TXIF != 0);
         U1TXREG = *chptr++;
-        
-        //while(IFS0bits.U1TXIF != 0);
         U1TXREG = *chptr;
         
         contPruebas++;
