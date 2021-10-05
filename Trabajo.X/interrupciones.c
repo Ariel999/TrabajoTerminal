@@ -8,14 +8,13 @@ char adCH = 0;
 
 extern fractcomplex valCH0[FFT_BLOCK_LENGTH]
 __attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
+extern fractcomplex valCH1[FFT_BLOCK_LENGTH]
+__attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
 
-extern fractional valCH1[MUESTRAS];
-//extern fractional valCH0[MUESTRAS], valCH1[MUESTRAS];
 extern int procesar;
 extern int contPruebas;
-extern float valCH0Float[MUESTRAS], valCH1Float[MUESTRAS];
+
 unsigned char *chptr;
-extern float epochs[MUESTRAS];
 
 void __attribute__((interrupt, no_auto_psv))_ADC1Interrupt(void){
     switch (adCH)
@@ -36,13 +35,13 @@ void __attribute__((interrupt, no_auto_psv))_ADC1Interrupt(void){
 		case 1:
 			if( contCH1 == MUESTRAS - 1)
             {
-                valCH1[contCH1] = ADC1BUF0;
+                valCH1[contCH1].real = ADC1BUF0;
                 procesar++;
                 contCH1 = 0;
             }
             else
             {
-                valCH1[contCH1++] = ADC1BUF0;
+                valCH1[contCH1++].real = ADC1BUF0;
             } 
 			break;
             
@@ -69,10 +68,10 @@ void __attribute__((interrupt, no_auto_psv))_T5Interrupt(void)
     else{
         //sprintf(buffer, "%f" , valCH0Float[contPruebas]);
         //chptr = (unsigned char *) &valCH0Float[contPruebas];
-        chptr = (unsigned char *) &epochs[contPruebas];
+        chptr = (unsigned char *) &valCH0[contPruebas];
         
-        U1TXREG = *chptr++;
-        U1TXREG = *chptr++;
+        //U1TXREG = *chptr++;
+        //U1TXREG = *chptr++;
         U1TXREG = *chptr++;
         U1TXREG = *chptr;
         

@@ -39,15 +39,10 @@
 #pragma config ICS = PGD2               // Comm Channel Select (Communicate on PGC2/EMUC2 and PGD2/EMUD2)
 #pragma config JTAGEN = OFF             // JTAG Port Enable (JTAG is Disabled)
 
-fractcomplex valCH0[FFT_BLOCK_LENGTH]
-__attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
-fractional valCH1[MUESTRAS];
-int procesar = 0;
-int contPruebas = 0;
 #ifdef FFTTWIDCOEFFS_IN_PROGMEM
 #if (FFT_BLOCK_LENGTH == 256)
-        const fractcomplex twiddleFactors[] __attribute__ ((space(auto_psv), aligned (FFT_BLOCK_LENGTH*2))) =
-        {
+    const fractcomplex twiddleFactors[] __attribute__ ((space(auto_psv), aligned (FFT_BLOCK_LENGTH*2))) =
+    {
         0x7FFF, 0x0000, 0x7FF6, 0xFCDC, 0x7FD9, 0xF9B8, 0x7FA7, 0xF695,
         0x7F62, 0xF374, 0x7F0A, 0xF055, 0x7E9D, 0xED38, 0x7E1E, 0xEA1E,
         0x7D8A, 0xE707, 0x7CE4, 0xE3F4, 0x7C2A, 0xE0E6, 0x7B5D, 0xDDDC,
@@ -80,9 +75,17 @@ int contPruebas = 0;
         0x8583, 0xDAD8, 0x84A3, 0xDDDC, 0x83D6, 0xE0E6, 0x831C, 0xE3F5,
         0x8276, 0xE707, 0x81E3, 0xEA1E, 0x8163, 0xED38, 0x80F7, 0xF055,
         0x809E, 0xF374, 0x8059, 0xF695, 0x8028, 0xF9B8, 0x800A, 0xFCDC
-        };
+    };
 #endif
 #endif
+
+fractcomplex valCH0[FFT_BLOCK_LENGTH]
+__attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
+fractcomplex valCH1[FFT_BLOCK_LENGTH]
+__attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
+
+int procesar = 0;
+int contPruebas = 0;
 extern const float prueba[];
 
 int main(int argc, char** argv) {
@@ -114,22 +117,17 @@ int main(int argc, char** argv) {
     iPPSOutput(OUT_PIN_PPS_RP0, OUT_FN_PPS_U1TX);
     PPSLock;
     //RPOR5bits.RP10R = 0x0003;
-    //IEC0bits.AD1IE=0;
-    //IEC0bits.T3IE=0;
     int i;
     while (1) 
     {
         if(procesar == 2)
         {
-            //U1TXREG = valCH0[1];
-            //U1TXREG = valCH0[1]>>8;
             IEC0bits.AD1IE=0;
             IEC0bits.T3IE=0;
             
             LATBbits.LATB7= ~LATBbits.LATB7;
             fractional real;
             real=Q15(-1);
-            //procesarEPOC();
             for( i= 0; i<MUESTRAS ; i++ )
             {
                 valCH0[i].real=Q15(prueba[i]);

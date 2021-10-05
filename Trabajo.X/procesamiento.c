@@ -11,6 +11,8 @@ typedef struct{
  
 extern fractcomplex valCH0[FFT_BLOCK_LENGTH]
 __attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
+extern fractcomplex valCH1[FFT_BLOCK_LENGTH]
+__attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
 
  #ifndef FFTTWIDCOEFFS_IN_PROGMEM
  fractcomplex twiddleFactors[FFT_BLOCK_LENGTH/2] 	
@@ -20,10 +22,6 @@ __attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
  __attribute__ ((space(prog), aligned (FFT_BLOCK_LENGTH*2)));
  #endif
 
-extern fractional valCH1[MUESTRAS];
-float valCH0Float[MUESTRAS], valCH1Float[MUESTRAS];
-float epochs[MUESTRAS];
-float var;
 int	peakFrequencyBin = 0;				/* Declare post-FFT variables to compute the */
 unsigned long peakFrequency = 0;
 fractional output[FFT_BLOCK_LENGTH];
@@ -108,8 +106,6 @@ void procesarMuestras( )
 {
     
     int i = 0;
-    //fractional *p_real = &valCH0[0].real ;
-	//fractcomplex *p_cmpx = &valCH0[0] ;
     
     #ifndef FFTTWIDCOEFFS_IN_PROGMEM					
     TwidFactorInit (LOG2_BLOCK_LENGTH, &twiddleFactors[0], 0);	
@@ -135,80 +131,6 @@ void procesarMuestras( )
     peakFrequency = peakFrequencyBin*(256/FFT_BLOCK_LENGTH);
     
     while(1);
-    
-    return;
-}
-/*void convertirDatos(char canal)
-{
-    int i = 0;
-    for( i = 0; i < MUESTRAS; i++ )
-    {
-        if( canal == 0 )
-        {
-            if( (valCH0[i] & 0x8000) == 0x8000)
-            {
-                var = ((~(valCH0[i] & 0x7FFF)) >> 6) & 0x01FF;
-                valCH0Float[i] = - var * 0.00322265625;
-            }
-            else
-            {
-                var = (valCH0[i] >> 6);
-                valCH0Float[i] = var * 0.00322265625;//0.00322265625
-            }
-        }
-        else
-        {
-            if( (valCH1[i] & 0x8000) == 0x8000)
-            {
-                var = ((~(valCH1[i] & 0x7FFF)) >> 6) & 0x01FF;
-                valCH1Float[i] = - var * 0.00322265625;
-            }
-            else
-            {
-                var = (valCH1[i] >> 6);
-                valCH1Float[i] = var * 0.00322265625;
-            }
-            
-        }
-    }
-}*/
-void procesarEPOC( void )
-{
-    int i,j;
-	for( i=0;i<MUESTRAS;i++)
-    {
-		//epochs[i] = valCH0Float[i]*hamming_coef[i];
-        epochs[i] = prueba[i]*hamming_coef[i];
-	}
-    complejo fft[MUESTRAS];
-    
-    for( i=0;i<MUESTRAS;i++)
-    {
-		fft[i].real=0.0;
-		fft[i].imag=0.0;
-	}
-    
-    float var1;
-	for(i=0;i<MUESTRAS;i++)
-    {
-		for(j=0;j<MUESTRAS;j++)
-        {
-            var1 = 2*M_PI*i*j/MUESTRAS;
-			float real = (float)cos((double)var1);
-			float imag = (float)sin((double)var1);
-			fft[i].real+=(epochs[j]*real);
-			fft[i].imag+=(epochs[j]*imag);				
-		}
-	}
-    
-    
-	for( i=0;i<MUESTRAS;i++)
-    {
-        float real = fft[i].real/MUESTRAS;
-		float imag = fft[i].imag/MUESTRAS;
-
-		epochs[i]=(float)sqrt(pow((double)real,2.0)+pow((double)imag,2.0));	
-	}
     
     return;
 }
