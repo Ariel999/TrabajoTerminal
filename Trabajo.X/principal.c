@@ -84,9 +84,14 @@ __attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
 fractcomplex valCH1[FFT_BLOCK_LENGTH]
 __attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
 
+fractional hamming[FFT_BLOCK_LENGTH] 	
+ __attribute__ ((section (".xbss, bss, xmemory"), aligned (FFT_BLOCK_LENGTH* 2 *2)));
+
 int procesar = 0;
 int contPruebas = 0;
+float lnCH0, lnCH1;
 extern const float prueba[];
+extern const float prueba1[];
 
 int main(int argc, char** argv) {
     /*
@@ -96,7 +101,7 @@ int main(int argc, char** argv) {
 	CLKDIVbits.PLLPRE = 0;          //N1=2
 	CLKDIVbits.PLLPOST = 0;         //N2=2
     //PLLFBDbits.PLLDIV = 0;          //M=2
-    PLLFBDbits.PLLDIV = 6;
+    PLLFBDbits.PLLDIV = 2;
     /*
      * FOSC = 7.37MHz * (2/(2*2)) = 3.685MHz
      * FCY = FOSC / 2 = 1.8425MHz
@@ -116,6 +121,8 @@ int main(int argc, char** argv) {
     PPSUnLock;
     iPPSOutput(OUT_PIN_PPS_RP0, OUT_FN_PPS_U1TX);
     PPSLock;
+    
+    HammingInit(FFT_BLOCK_LENGTH,&hamming[0]);
     //RPOR5bits.RP10R = 0x0003;
     int i;
     while (1) 
@@ -125,34 +132,27 @@ int main(int argc, char** argv) {
             IEC0bits.AD1IE=0;
             IEC0bits.T3IE=0;
             
-            LATBbits.LATB7= ~LATBbits.LATB7;
-            fractional real;
-            real=Q15(-1);
+            
             for( i= 0; i<MUESTRAS ; i++ )
             {
                 valCH0[i].real=Q15(prueba[i]);
                 valCH0[i].imag=0x0000;
+                valCH1[i].real=Q15(prueba1[i]);
+                valCH1[i].imag=0x0000;
             }
-            procesarMuestras();
             LATBbits.LATB7= ~LATBbits.LATB7;
-            //IEC1bits.T5IE=1;
-            while(1)
+            procesarMuestras(0);
+            procesarMuestras(1);
+            LATBbits.LATB7= ~LATBbits.LATB7;
+            IEC1bits.T5IE=1;
+            /*while(1)
             {
                 Nop();
-            }
-            //convertirDatos(0);
-            //convertirDatos(1);
+            }*/
             
-            //procesarEPOC();
             
             //IEC1bits.T5IE=1;
-            
-            /*for( i = 0 ; i < SAMPLES ; i++)
-            {
-                U1TXREG = valCH0[i];
-                U1TXREG = valCH0[i]>>8;
-            }*/
-            //procesarMuestras();
+
             procesar = 0;
         }
     }

@@ -14,7 +14,7 @@ void iniTimer5( void )
     TMR5    = 0X0000;
     T5CON   = 0X0000;
     //PR5     = 28789;
-    PR5     = 57578;
+    PR5     = 28789;
     
     IFS1bits.T5IF=0;
     T5CONbits.TON = 1;
@@ -59,5 +59,5 @@ void iniUART( void )
 {
     U1MODEbits.ABAUD = 1;
     //U1STAbits.UTXISEL0 = 1;
-    U1BRG = 11; 
+    U1BRG = 5; 
 }

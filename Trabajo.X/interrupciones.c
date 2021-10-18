@@ -68,7 +68,13 @@ void __attribute__((interrupt, no_auto_psv))_T5Interrupt(void)
     else{
         //sprintf(buffer, "%f" , valCH0Float[contPruebas]);
         //chptr = (unsigned char *) &valCH0Float[contPruebas];
-        chptr = (unsigned char *) &valCH0[contPruebas];
+        chptr = (unsigned char *) &valCH0[contPruebas].real;
+        
+        //U1TXREG = *chptr++;
+        //U1TXREG = *chptr++;
+        U1TXREG = *chptr++;
+        U1TXREG = *chptr;
+        chptr = (unsigned char *) &valCH1[contPruebas].real;
         
         //U1TXREG = *chptr++;
         //U1TXREG = *chptr++;

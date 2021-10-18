@@ -4,6 +4,7 @@
 #define MUESTRAS 256
 #define LOG2_BLOCK_LENGTH 8
 #define FFT_BLOCK_LENGTH 256
+#define FRECUENCIA_MUESTREO 256
 
 #define FFTTWIDCOEFFS_IN_PROGMEM     /*<---Comment out this line of the code if twiddle factors (coefficients) */
                                     /*reside in data memory (RAM) as opposed to Program Memory */

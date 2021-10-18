@@ -18,6 +18,6 @@ extern "C" {
 #ifdef	__cplusplus
 }
 #endif
-void procesarMuestras( );
+void procesarMuestras( char canal );
 #endif	/* PROCESAMIENTO_H */
 
