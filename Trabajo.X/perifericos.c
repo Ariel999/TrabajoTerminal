@@ -2,18 +2,16 @@
 #include <dsp.h>
 #include "defs.h"
 
-void iniTimer( void )
+void iniTimer3( void )
 {
     TMR3    = 0X0000;
     T3CON   = 0X0000;
-    //PR3     = 7197;
-    PR3     = 14394;
+    PR3     = 14394; //Frecuencia de 256 Hz
 }
 void iniTimer5( void )
 {
     TMR5    = 0X0000;
     T5CON   = 0X0000;
-    //PR5     = 28789;
     PR5     = 28789;
     
     IFS1bits.T5IF=0;
@@ -34,30 +32,50 @@ void iniADC( void )
     AD1CON2bits.CHPS = 0b01;        //Convierte el CH0 and CH1
     AD1CON1bits.SSRC = 0b010;       //Habilita el GP timer (Timer3 for ADC1)
     AD1CON3bits.SAMC = 8;           //Sample 8 TAD
-    AD1CON1bits.FORM = 0b11;        // Formato de salida de datos en entero sin signo
+    AD1CON1bits.FORM = 0b11;        //Formato de salida de datos en fractional con signo
     
-}
-void iniInterrupciones( void )
-{
-    IFS0bits.AD1IF=0;               //Se habilita la bandera del ADC
-    IFS0bits.T3IF=0;                //Se habilita la bandera del Timer3
-    IFS0bits.U1TXIF=0;
-    IPC3bits.AD1IP=7;               //Prioridad del ADC
-    IEC0bits.AD1IE=1;               //Se habilita la interrupcion del ADC
-    IEC0bits.T3IE=1;                //Se habilita la interrupcion del Timer3
-    IEC0bits.U1TXIE=1;
-    
-}
-void activaPerifericos( void )
-{
-    AD1CON1bits.ADON = 1;           //Enciende el ADC
-    T3CONbits.TON =1;               //Enciende el Timer3
-    U1MODEbits.UARTEN=1;
-    U1STAbits.UTXEN=1;
 }
 void iniUART( void )
 {
     U1MODEbits.ABAUD = 1;
     //U1STAbits.UTXISEL0 = 1;
     U1BRG = 5; 
+}
+void iniInterrupcionesADC( void )
+{
+    IFS0bits.AD1IF=0;               //Se habilita la bandera del ADC
+    IFS0bits.T3IF=0;                //Se habilita la bandera del Timer3
+    IFS0bits.U1TXIF=0;              //Se habilita la bandera del UART
+    //IPC3bits.AD1IP=7;               //Prioridad del ADC
+    IEC0bits.AD1IE=1;               //Se habilita la interrupcion del ADC
+    IEC0bits.T3IE=1;                //Se habilita la interrupcion del Timer3
+    IEC0bits.U1TXIE=1;              //Se habilita la interrupcion de escritura del UART
+    
+}
+void iniInterrupcionesUART( void )
+{
+    IFS0bits.U1TXIF=0;              //Se habilita la bandera del UART
+    IEC0bits.U1TXIE=1;              //Se habilita la interrupcion de escritura del UART
+    IFS1bits.T5IF=0;                //Se habilita la bandera del Timer5
+    IEC1bits.T5IE=1;                //Se habilita la interrupcion del Timer5
+}
+void activaADC( void )
+{
+    AD1CON1bits.ADON = 1;           //Enciende el ADC
+    T3CONbits.TON =1;               //Enciende el Timer3
+}
+void desactivaADC( void )
+{
+    AD1CON1bits.ADON = 0;
+    T3CONbits.TON =0;
+}
+void activaUART( void )
+{
+    U1MODEbits.UARTEN = 1;            //Enciende el UART
+    U1STAbits.UTXEN = 1;              //Enciende la escritura del UART
+    T5CONbits.TON = 1;
+}
+void desactivaUART( void )
+{
+    T5CONbits.TON = 0;
 }

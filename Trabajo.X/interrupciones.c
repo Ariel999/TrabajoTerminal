@@ -2,6 +2,7 @@
 #include <dsp.h>
 #include <stdio.h>
 #include "defs.h"
+#include "perifericos.h"
 
 int contCH0 = 0, contCH1 = 0;
 char adCH = 0;
@@ -13,8 +14,9 @@ __attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
 
 extern int procesar;
 extern int contPruebas;
-
+extern float lnCH0, lnCH1;
 unsigned char *chptr;
+extern fractional output[FFT_BLOCK_LENGTH];
 
 void __attribute__((interrupt, no_auto_psv))_ADC1Interrupt(void){
     switch (adCH)
@@ -59,29 +61,44 @@ void __attribute__((interrupt, no_auto_psv))_T3Interrupt(void)
 }
 void __attribute__((interrupt, no_auto_psv))_T5Interrupt(void)
 {
-    if( contPruebas == MUESTRAS ){
-        IEC1bits.T5IE=0;
-        //IEC0bits.AD1IE=1;
-        //IEC0bits.T3IE=1; 
+    if( contPruebas == 2 ){
+        desactivaUART();
         contPruebas = 0;
     }
+    else if( contPruebas == 0 )
+    {
+        chptr = (unsigned char *) &lnCH0;
+        
+        U1TXREG = *chptr++;
+        U1TXREG = *chptr++;
+        U1TXREG = *chptr++;
+        U1TXREG = *chptr;
+        contPruebas++;
+    }
     else{
+        chptr = (unsigned char *) &lnCH1;
+        
+        U1TXREG = *chptr++;
+        U1TXREG = *chptr++;
+        U1TXREG = *chptr++;
+        U1TXREG = *chptr;
+        contPruebas++;
         //sprintf(buffer, "%f" , valCH0Float[contPruebas]);
         //chptr = (unsigned char *) &valCH0Float[contPruebas];
-        chptr = (unsigned char *) &valCH0[contPruebas].real;
+        //chptr = (unsigned char *) &valCH0[contPruebas];
+        
+        //U1TXREG = *chptr++;
+        //U1TXREG = *chptr++;
+        //U1TXREG = *chptr++;
+        //U1TXREG = *chptr;
+        /*chptr = (unsigned char *) &valCH1[contPruebas].real;
         
         //U1TXREG = *chptr++;
         //U1TXREG = *chptr++;
         U1TXREG = *chptr++;
-        U1TXREG = *chptr;
-        chptr = (unsigned char *) &valCH1[contPruebas].real;
+        U1TXREG = *chptr;*/
         
-        //U1TXREG = *chptr++;
-        //U1TXREG = *chptr++;
-        U1TXREG = *chptr++;
-        U1TXREG = *chptr;
-        
-        contPruebas++;
+        //contPruebas++;
     }
     IFS1bits.T5IF = 0;
 }

@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=principal.c perifericos.c interrupciones.c procesamiento.c
+SOURCEFILES_QUOTED_IF_SPACED=principal.c perifericos.c interrupciones.c procesamiento.c twiddleFactors.c config.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/principal.o ${OBJECTDIR}/perifericos.o ${OBJECTDIR}/interrupciones.o ${OBJECTDIR}/procesamiento.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/principal.o.d ${OBJECTDIR}/perifericos.o.d ${OBJECTDIR}/interrupciones.o.d ${OBJECTDIR}/procesamiento.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/principal.o ${OBJECTDIR}/perifericos.o ${OBJECTDIR}/interrupciones.o ${OBJECTDIR}/procesamiento.o ${OBJECTDIR}/twiddleFactors.o ${OBJECTDIR}/config.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/principal.o.d ${OBJECTDIR}/perifericos.o.d ${OBJECTDIR}/interrupciones.o.d ${OBJECTDIR}/procesamiento.o.d ${OBJECTDIR}/twiddleFactors.o.d ${OBJECTDIR}/config.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/principal.o ${OBJECTDIR}/perifericos.o ${OBJECTDIR}/interrupciones.o ${OBJECTDIR}/procesamiento.o
+OBJECTFILES=${OBJECTDIR}/principal.o ${OBJECTDIR}/perifericos.o ${OBJECTDIR}/interrupciones.o ${OBJECTDIR}/procesamiento.o ${OBJECTDIR}/twiddleFactors.o ${OBJECTDIR}/config.o
 
 # Source Files
-SOURCEFILES=principal.c perifericos.c interrupciones.c procesamiento.c
+SOURCEFILES=principal.c perifericos.c interrupciones.c procesamiento.c twiddleFactors.c config.c
 
 
 
@@ -119,6 +119,18 @@ ${OBJECTDIR}/procesamiento.o: procesamiento.c  .generated_files/flags/default/3c
 	@${RM} ${OBJECTDIR}/procesamiento.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  procesamiento.c  -o ${OBJECTDIR}/procesamiento.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/procesamiento.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/twiddleFactors.o: twiddleFactors.c  .generated_files/flags/default/ca9bf98f11382ca663035c00a6136d467739ee69 .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/twiddleFactors.o.d 
+	@${RM} ${OBJECTDIR}/twiddleFactors.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  twiddleFactors.c  -o ${OBJECTDIR}/twiddleFactors.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/twiddleFactors.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/config.o: config.c  .generated_files/flags/default/602253d1f7f90714cabe34abe06ef8af1d54711c .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/config.o.d 
+	@${RM} ${OBJECTDIR}/config.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  config.c  -o ${OBJECTDIR}/config.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/config.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 else
 ${OBJECTDIR}/principal.o: principal.c  .generated_files/flags/default/8002d7913406182d9d7577fefb23575d69dc36e1 .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
 	@${MKDIR} "${OBJECTDIR}" 
@@ -143,6 +155,18 @@ ${OBJECTDIR}/procesamiento.o: procesamiento.c  .generated_files/flags/default/8c
 	@${RM} ${OBJECTDIR}/procesamiento.o.d 
 	@${RM} ${OBJECTDIR}/procesamiento.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  procesamiento.c  -o ${OBJECTDIR}/procesamiento.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/procesamiento.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/twiddleFactors.o: twiddleFactors.c  .generated_files/flags/default/42d6bad58e2684578c8d6a0b67aea41443fa31d9 .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/twiddleFactors.o.d 
+	@${RM} ${OBJECTDIR}/twiddleFactors.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  twiddleFactors.c  -o ${OBJECTDIR}/twiddleFactors.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/twiddleFactors.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/config.o: config.c  .generated_files/flags/default/fba1690393d22dbc00882e00a450fd941cd2aedd .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/config.o.d 
+	@${RM} ${OBJECTDIR}/config.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  config.c  -o ${OBJECTDIR}/config.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/config.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

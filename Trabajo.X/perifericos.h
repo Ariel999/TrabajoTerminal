@@ -19,12 +19,16 @@ extern "C" {
 }
 #endif
 
-void iniTimer( void );
+void iniTimer3( void );
 void iniTimer5( void );
 void iniADC( void );
-void iniInterrupciones( void );
-void activaPerifericos( void );
 void iniUART( void );
+void iniInterrupcionesADC( void );
+void iniInterrupcionesUART( void );
+void activaADC( void );
+void desactivaADC( void );
+void activaUART( void );
+void desactivaUART( void );
 
 #endif	/* PERIFERICOS_H */
 
