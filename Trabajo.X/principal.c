@@ -7,6 +7,8 @@
 #include "interrupciones.h"
 #include "procesamiento.h"
 #include "config.h"
+#include "lcd.h"
+#include "pwm.h"
 
 fractcomplex valCH0[FFT_BLOCK_LENGTH]
 __attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
@@ -25,8 +27,15 @@ float lnCH0 = 0, lnCH1 = 0;
 float bandaAlfaCH0 = 0, bandaAlfaCH1 = 0;
 extern const float prueba[];
 extern const float prueba1[];
+//Variables para temporizador
+char tiempo[7];
+char dmin, umin, dseg, useg, actualizarTiempo, decremento;
+int incrementos;
 
 int main(int argc, char** argv) {
+    
+    iniPerifericos();
+    ini_lcd();
     iniTimer3();
     iniADC();
     iniUART();
@@ -44,12 +53,23 @@ int main(int argc, char** argv) {
     PPSLock;
     //Inicialización de los coeficientes de hamming
     HammingInit(FFT_BLOCK_LENGTH,&hamming[0]);
+    
+    comando_lcd(0x0080); //Poner cursor en posc 0
+    string_lcd(" Inicie lectura ");
     //RPOR5bits.RP10R = 0x0003;
     int i;
-    while (1) 
+    /*tdcs = 1;
+    if(tdcs == 1){
+        iniADCtDCS();
+        activaADC();
+    }*/
+    while(1) 
     {
         if(PORTAbits.RA1 == 1 && estaActivo == 0)
         {
+            limpiar_lcd();
+            comando_lcd(0x0080); //Poner cursor en posc 0
+            string_lcd("Leyendo...");
             activaADC();
             estaActivo = 1;
             LATBbits.LATB15= ~LATBbits.LATB15;
@@ -58,13 +78,13 @@ int main(int argc, char** argv) {
         {
             desactivaADC();
 
-            for( i= 0; i<MUESTRAS ; i++ )
+            /*for( i= 0; i<MUESTRAS ; i++ )
             {
                 valCH0[i].real=Q15(prueba[i]);
                 valCH0[i].imag=0x0000;
                 valCH1[i].real=Q15(prueba1[i]);
                 valCH1[i].imag=0x0000;
-            }
+            }*/
             LATBbits.LATB7= ~LATBbits.LATB7;
             procesarMuestras(0);
             procesarMuestras(1);
@@ -82,6 +102,39 @@ int main(int argc, char** argv) {
                 if( fabsf(lnCH0) - fabsf(lnCH1) < 0)
                 {
                     tdcs=1;
+                    iniTimer1();
+                    iniInterrupcionesTimer1();
+                    iniPWM();
+                    
+                    limpiar_lcd();
+                    comando_lcd(0x0080); //Poner cursor en posc 0
+                    string_lcd("Preparando tDCS");
+                    
+                    LATBbits.LATB15=1;
+                    __delay_ms(30000);
+                    LATBbits.LATB15=0;
+                    
+                    limpiar_lcd();
+                    comando_lcd(0x0080);
+                    string_lcd("Tiempo restante:");
+                    comando_lcd(0x00C5);
+                    string_lcd(tiempo);
+                    __delay_ms(1000);
+                    
+                    activarPWM();
+                    activaPerifericosTimer1();
+                    //Inicializar tiempo
+                    incrementos=0;
+                    decremento=0;
+                    dmin=2; umin=0; dseg=0; useg=0;
+                    tiempo[2]= 'm';
+                    tiempo[5]= 's';
+                    tiempo[6]= 0;
+                    actualizarTiempo=0;
+                }
+                else
+                {
+                    activaADC();
                 }
                 segundos = 0;
                 bandaAlfaCH0 = 0;
@@ -89,9 +142,28 @@ int main(int argc, char** argv) {
                 LATBbits.LATB7= ~LATBbits.LATB7;
                 activaUART();
             }
+            else
+            {
+                activaADC();
+            }
             //IEC1bits.T5IE=1;
             procesar = 0;
-            activaADC();
+            
+        }
+        //Si tDCS esta activada
+        if( tdcs == 1 )
+        {
+            if(actualizarTiempo)
+            {
+                comando_lcd(0x00C5); //Poner cursor en posc 45 - fila debajo posc 5
+                tiempo[0]=dmin+0x0030;
+                tiempo[1]=umin+0x0030;
+                tiempo[3]=dseg+0x0030;
+                tiempo[4]=useg+0x0030;
+                string_lcd(tiempo);
+                actualizarTiempo=0;
+            }
+            Nop();
         }
     }
     return (EXIT_SUCCESS);

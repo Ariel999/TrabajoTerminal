@@ -9,6 +9,8 @@
       <itemPath>interrupciones.h</itemPath>
       <itemPath>procesamiento.h</itemPath>
       <itemPath>config.h</itemPath>
+      <itemPath>lcd.h</itemPath>
+      <itemPath>pwm.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -23,6 +25,10 @@
       <itemPath>procesamiento.c</itemPath>
       <itemPath>twiddleFactors.c</itemPath>
       <itemPath>config.c</itemPath>
+      <itemPath>habilitarOscSec.s</itemPath>
+      <itemPath>lcd.c</itemPath>
+      <itemPath>pwm.c</itemPath>
+      <itemPath>retardo.s</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

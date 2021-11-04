@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=principal.c perifericos.c interrupciones.c procesamiento.c twiddleFactors.c config.c
+SOURCEFILES_QUOTED_IF_SPACED=principal.c perifericos.c interrupciones.c procesamiento.c twiddleFactors.c config.c habilitarOscSec.s lcd.c pwm.c retardo.s
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/principal.o ${OBJECTDIR}/perifericos.o ${OBJECTDIR}/interrupciones.o ${OBJECTDIR}/procesamiento.o ${OBJECTDIR}/twiddleFactors.o ${OBJECTDIR}/config.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/principal.o.d ${OBJECTDIR}/perifericos.o.d ${OBJECTDIR}/interrupciones.o.d ${OBJECTDIR}/procesamiento.o.d ${OBJECTDIR}/twiddleFactors.o.d ${OBJECTDIR}/config.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/principal.o ${OBJECTDIR}/perifericos.o ${OBJECTDIR}/interrupciones.o ${OBJECTDIR}/procesamiento.o ${OBJECTDIR}/twiddleFactors.o ${OBJECTDIR}/config.o ${OBJECTDIR}/habilitarOscSec.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/retardo.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/principal.o.d ${OBJECTDIR}/perifericos.o.d ${OBJECTDIR}/interrupciones.o.d ${OBJECTDIR}/procesamiento.o.d ${OBJECTDIR}/twiddleFactors.o.d ${OBJECTDIR}/config.o.d ${OBJECTDIR}/habilitarOscSec.o.d ${OBJECTDIR}/lcd.o.d ${OBJECTDIR}/pwm.o.d ${OBJECTDIR}/retardo.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/principal.o ${OBJECTDIR}/perifericos.o ${OBJECTDIR}/interrupciones.o ${OBJECTDIR}/procesamiento.o ${OBJECTDIR}/twiddleFactors.o ${OBJECTDIR}/config.o
+OBJECTFILES=${OBJECTDIR}/principal.o ${OBJECTDIR}/perifericos.o ${OBJECTDIR}/interrupciones.o ${OBJECTDIR}/procesamiento.o ${OBJECTDIR}/twiddleFactors.o ${OBJECTDIR}/config.o ${OBJECTDIR}/habilitarOscSec.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/retardo.o
 
 # Source Files
-SOURCEFILES=principal.c perifericos.c interrupciones.c procesamiento.c twiddleFactors.c config.c
+SOURCEFILES=principal.c perifericos.c interrupciones.c procesamiento.c twiddleFactors.c config.c habilitarOscSec.s lcd.c pwm.c retardo.s
 
 
 
@@ -131,6 +131,18 @@ ${OBJECTDIR}/config.o: config.c  .generated_files/flags/default/602253d1f7f90714
 	@${RM} ${OBJECTDIR}/config.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  config.c  -o ${OBJECTDIR}/config.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/config.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/lcd.o: lcd.c  .generated_files/flags/default/b15f66e822302a0c21936bbe9e7c47403579a95e .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lcd.o.d 
+	@${RM} ${OBJECTDIR}/lcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lcd.c  -o ${OBJECTDIR}/lcd.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lcd.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/pwm.o: pwm.c  .generated_files/flags/default/6e42e2b6c8fc0154cf1ed66e79950b724f11a964 .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pwm.o.d 
+	@${RM} ${OBJECTDIR}/pwm.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  pwm.c  -o ${OBJECTDIR}/pwm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/pwm.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 else
 ${OBJECTDIR}/principal.o: principal.c  .generated_files/flags/default/8002d7913406182d9d7577fefb23575d69dc36e1 .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
 	@${MKDIR} "${OBJECTDIR}" 
@@ -168,12 +180,48 @@ ${OBJECTDIR}/config.o: config.c  .generated_files/flags/default/fba1690393d22dbc
 	@${RM} ${OBJECTDIR}/config.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  config.c  -o ${OBJECTDIR}/config.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/config.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/lcd.o: lcd.c  .generated_files/flags/default/863836be6f04e0c5a7678a335410821462a8c523 .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lcd.o.d 
+	@${RM} ${OBJECTDIR}/lcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lcd.c  -o ${OBJECTDIR}/lcd.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lcd.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/pwm.o: pwm.c  .generated_files/flags/default/2b824afadebbae76a04e49f161c41c17eafeaec2 .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pwm.o.d 
+	@${RM} ${OBJECTDIR}/pwm.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  pwm.c  -o ${OBJECTDIR}/pwm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/pwm.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 endif
 
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/habilitarOscSec.o: habilitarOscSec.s  .generated_files/flags/default/1881f78b5ef92f39b631f0857ed0ebf10c31b2c1 .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/habilitarOscSec.o.d 
+	@${RM} ${OBJECTDIR}/habilitarOscSec.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  habilitarOscSec.s  -o ${OBJECTDIR}/habilitarOscSec.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,-MD,"${OBJECTDIR}/habilitarOscSec.o.d",--defsym=__MPLAB_BUILD=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,-g,--no-relax$(MP_EXTRA_AS_POST)  -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/retardo.o: retardo.s  .generated_files/flags/default/48819c4df658ae14be61305df5e8f9e6a9282e64 .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/retardo.o.d 
+	@${RM} ${OBJECTDIR}/retardo.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  retardo.s  -o ${OBJECTDIR}/retardo.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,-MD,"${OBJECTDIR}/retardo.o.d",--defsym=__MPLAB_BUILD=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,-g,--no-relax$(MP_EXTRA_AS_POST)  -mdfp="${DFP_DIR}/xc16"
+	
 else
+${OBJECTDIR}/habilitarOscSec.o: habilitarOscSec.s  .generated_files/flags/default/56cce4a6b50f78b1ad20a3f1e921b9ecf86d2da6 .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/habilitarOscSec.o.d 
+	@${RM} ${OBJECTDIR}/habilitarOscSec.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  habilitarOscSec.s  -o ${OBJECTDIR}/habilitarOscSec.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,-MD,"${OBJECTDIR}/habilitarOscSec.o.d",--defsym=__MPLAB_BUILD=1,-g,--no-relax$(MP_EXTRA_AS_POST)  -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/retardo.o: retardo.s  .generated_files/flags/default/834380e2560566142bcbaa0d4539800410a9ab2b .generated_files/flags/default/a733305486dba52bf1b2f0129eacaac696315869
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/retardo.o.d 
+	@${RM} ${OBJECTDIR}/retardo.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  retardo.s  -o ${OBJECTDIR}/retardo.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,-MD,"${OBJECTDIR}/retardo.o.d",--defsym=__MPLAB_BUILD=1,-g,--no-relax$(MP_EXTRA_AS_POST)  -mdfp="${DFP_DIR}/xc16"
+	
 endif
 
 # ------------------------------------------------------------------------------------
