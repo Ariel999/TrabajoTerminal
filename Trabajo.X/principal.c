@@ -135,12 +135,12 @@ int main(int argc, char** argv) {
                 else
                 {
                     activaADC();
+                    segundos = 0;
+                    bandaAlfaCH0 = 0;
+                    bandaAlfaCH1 = 0;
+                    LATBbits.LATB7= ~LATBbits.LATB7;
+                    activaUART();
                 }
-                segundos = 0;
-                bandaAlfaCH0 = 0;
-                bandaAlfaCH1 = 0;
-                LATBbits.LATB7= ~LATBbits.LATB7;
-                activaUART();
             }
             else
             {
