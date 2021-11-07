@@ -91,7 +91,7 @@ void iniInterrupcionesTimer1( void )
 {
     //TIMER1
     IFS0bits.T1IF = 0;      // Habilita/Apaga la bandera del Timer1
-    IPC0bits.T1IP = 4;      // Prioridad nivel 4 para interrupcion Timer1
+    //IPC0bits.T1IP = 4;      // Prioridad nivel 4 para interrupcion Timer1
  	IEC0bits.T1IE = 1;      // Se habilita la interrupci?n Timer1
     
 }

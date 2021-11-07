@@ -5,14 +5,18 @@
         <group>
             <file>file:/D:/ESCOM/TT2/Trabajo.X/interrupciones.c</file>
             <file>file:/D:/ESCOM/TT2/Trabajo.X/twiddleFactors.c</file>
-            <file>file:/D:/ESCOM/TT2/Trabajo.X/procesamiento.c</file>
             <file>file:/D:/ESCOM/TT2/Trabajo.X/defs.h</file>
             <file>file:/D:/ESCOM/TT2/Trabajo.X/interrupciones.h</file>
             <file>file:/D:/ESCOM/TT2/Trabajo.X/perifericos.c</file>
             <file>file:/D:/ESCOM/TT2/Trabajo.X/config.h</file>
-            <file>file:/D:/ESCOM/TT2/Trabajo.X/procesamiento.h</file>
             <file>file:/D:/ESCOM/TT2/Trabajo.X/config.c</file>
             <file>file:/D:/ESCOM/TT2/Trabajo.X/principal.c</file>
+            <file>file:/D:/ESCOM/TT2/Trabajo.X/habilitarOscSec.s</file>
+            <file>file:/D:/ESCOM/TT2/Trabajo.X/lcd.h</file>
+            <file>file:/D:/ESCOM/TT2/Trabajo.X/procesamiento.c</file>
+            <file>file:/D:/ESCOM/TT2/Trabajo.X/pwm.h</file>
+            <file>file:/D:/ESCOM/TT2/Trabajo.X/procesamiento.h</file>
+            <file>file:/D:/ESCOM/TT2/Trabajo.X/lcd.c</file>
             <file>file:/D:/ESCOM/TT2/Trabajo.X/perifericos.h</file>
         </group>
     </open-files>

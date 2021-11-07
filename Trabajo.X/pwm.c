@@ -25,7 +25,7 @@ void iniPWM(void){
 }
 
 void activarPWM(void){
-	IPC1bits.T2IP = 1; // Prioridad nivel 1 para interrupcion Timer2
+	//IPC1bits.T2IP = 1; // Prioridad nivel 1 para interrupcion Timer2
     IFS0bits.T2IF = 0; // Limpia la bandera del Timer2
     IEC0bits.T2IE = 1; // Se habilita la interrupción Timer2
     T2CONbits.TON = 1; // Enciende el Timer2, inicia el conteo
