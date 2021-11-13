@@ -58,6 +58,7 @@ int main(int argc, char** argv) {
     string_lcd(" Inicie lectura ");
     //RPOR5bits.RP10R = 0x0003;
     int i;
+    int contador=0;
     while(1) 
     {
         if(PORTAbits.RA1 == 1 && estaActivo == 0)
@@ -121,7 +122,8 @@ int main(int argc, char** argv) {
                 string_lcd(valorfaa);
                 __delay_ms(5000);
                 
-                if( tdcs==1)
+                contador++;
+                if( tdcs==1 && contador>=3)
                 {
                     
                     iniTimer1();
@@ -157,10 +159,12 @@ int main(int argc, char** argv) {
                 }
                 else
                 {
-                    limpiar_lcd();
-                    comando_lcd(0x0080); //Poner cursor en posc 0
-                    string_lcd("No Activa tDCS");
-                    __delay_ms(1000);
+                    if(contador>=3){
+                        limpiar_lcd();
+                        comando_lcd(0x0080); //Poner cursor en posc 0
+                        string_lcd("No Activa tDCS");
+                        __delay_ms(1000);
+                    }
                     
                     activaADC();
                     limpiar_lcd();
