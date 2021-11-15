@@ -27,6 +27,7 @@ float lnCH0 = 0, lnCH1 = 0;
 float faa = 0;
 float bandaAlfaCH0 = 0, bandaAlfaCH1 = 0;
 char valorfaa[8];
+int eliminarMuestra = 0;
 //Variables para temporizador
 char tiempo[7];
 char dmin, umin, dseg, useg, actualizarTiempo, decremento;
@@ -59,6 +60,7 @@ int main(int argc, char** argv) {
     //RPOR5bits.RP10R = 0x0003;
     int i;
     int contador=0;
+    int muestrasConRuido = 0;
     while(1) 
     {
         if(PORTAbits.RA1 == 1 && estaActivo == 0)
@@ -74,15 +76,24 @@ int main(int argc, char** argv) {
         {
             desactivaADC();
             //LATBbits.LATB7= ~LATBbits.LATB7;
-            procesarMuestras(0);
-            procesarMuestras(1);
+            eliminarMuestra = 0;
+            validarMuestras();
+            if( eliminarMuestra == 1)
+            {
+                muestrasConRuido++;
+            }
+            else
+            {
+                procesarMuestras(0);
+                procesarMuestras(1);
+            }
             segundos++;
             
             if( segundos == SEGUNDOS_PROCESAMIENTO)
             {
                 //LATBbits.LATB7= ~LATBbits.LATB7;
-                bandaAlfaCH0/= SEGUNDOS_PROCESAMIENTO * 5;
-                bandaAlfaCH1/= SEGUNDOS_PROCESAMIENTO * 5;
+                bandaAlfaCH0/= (SEGUNDOS_PROCESAMIENTO - muestrasConRuido) * 5;
+                bandaAlfaCH1/= (SEGUNDOS_PROCESAMIENTO - muestrasConRuido) * 5;
                 
                 //Calcular el logaritmo natural del promedio
                 lnCH0 = logf(bandaAlfaCH0);
@@ -174,6 +185,7 @@ int main(int argc, char** argv) {
                     //activaUART();
                 }
                 segundos = 0;
+                muestrasConRuido = 0;
                 bandaAlfaCH0 = 0;
                 bandaAlfaCH1 = 0;
             }

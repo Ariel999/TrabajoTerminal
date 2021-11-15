@@ -26,6 +26,7 @@ extern fractional hamming[FFT_BLOCK_LENGTH]
 
 int	peakFrequencyBin = 0;				/* Declare post-FFT variables to compute the */
 unsigned long peakFrequency = 0;
+extern int eliminarMuestra;
 extern float lnCH0, lnCH1;
 extern float bandaAlfaCH0, bandaAlfaCH1;
 fractional output[FFT_BLOCK_LENGTH];
@@ -97,5 +98,38 @@ void procesarMuestras( char canal )
         bandaAlfaCH1 += ((float)magnitudAlfa) / (32768);
     //while(1);
     
+    return;
+}
+void validarMuestras( void )
+{
+    int ruido = 0, i;
+    for( i = 0; i < MUESTRAS ; i++ )
+    {
+        if( valCH0[i].real == 0x7FC0 )
+        {
+            ruido++;
+        }
+    }
+    if( ruido >= (MUESTRAS / 2) )
+    {
+        eliminarMuestra = 1;
+        return;
+    }
+    else{
+        ruido = 0;
+    }
+    
+    for( i = 0; i < MUESTRAS ; i++ )
+    {
+        if( valCH1[i].real == 0x7FC0 )
+        {
+            ruido++;
+        }
+    }
+    if( ruido >= (MUESTRAS / 2) )
+    {
+        eliminarMuestra = 1;
+        return;
+    }
     return;
 }

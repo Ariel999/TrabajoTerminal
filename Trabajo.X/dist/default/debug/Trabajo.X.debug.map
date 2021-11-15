@@ -7,7 +7,7 @@ Command:
   -p33FJ64GP802 \
   --mdfp=C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/dsPIC33F-GP-MC_DFP/1.3.64/xc16 \
   -o \
-  dist/default/production/Trabajo.X.production.elf \
+  dist/default/debug/Trabajo.X.debug.elf \
   -Lc:/program files/microchip/xc16/v1.70/bin/bin/.. \
   -LC:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/dsPIC33F-GP-MC_DFP/1.3.64/xc16/bin/../support/PIC24H/gld \
   -LC:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/dsPIC33F-GP-MC_DFP/1.3.64/xc16/bin/../support/dsPIC33F/gld \
@@ -25,18 +25,21 @@ Command:
   -Lc:/program files/microchip/xc16/v1.70/bin/bin/../../support/dsPIC33E/gld \
   -Lc:/program files/microchip/xc16/v1.70/bin/bin/../../lib/dsPIC33F \
   -Lc:/program files/microchip/xc16/v1.70/bin/bin/../../support/dsPIC33F/gld \
-  build/default/production/principal.o \
-  build/default/production/perifericos.o \
-  build/default/production/interrupciones.o \
-  build/default/production/procesamiento.o \
-  build/default/production/twiddleFactors.o \
-  build/default/production/config.o \
-  build/default/production/habilitarOscSec.o \
-  build/default/production/lcd.o \
-  build/default/production/pwm.o \
-  build/default/production/retardo.o \
+  build/default/debug/principal.o \
+  build/default/debug/perifericos.o \
+  build/default/debug/interrupciones.o \
+  build/default/debug/procesamiento.o \
+  build/default/debug/twiddleFactors.o \
+  build/default/debug/config.o \
+  build/default/debug/habilitarOscSec.o \
+  build/default/debug/lcd.o \
+  build/default/debug/pwm.o \
+  build/default/debug/retardo.o \
   C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a \
   --defsym=__MPLAB_BUILD=1 \
+  --defsym=__MPLAB_DEBUG=1 \
+  --defsym=__DEBUG=1 \
+  --defsym=__MPLAB_DEBUGGER_SIMULATOR=1 \
   -Tp33FJ64GP802.gld.00 \
   --stack=16 \
   --check-sections \
@@ -49,10 +52,10 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/production/Trabajo.X.production.map \
+  -Map=dist/default/debug/Trabajo.X.debug.map \
   --report-mem \
   --memorysummary \
-  dist/default/production/memoryfile.xml \
+  dist/default/debug/memoryfile.xml \
   -start-group \
   --library=lega-pic30-elf \
   --library=m-elf \
@@ -62,17 +65,17 @@ Command:
 Archive member included because of file (symbol)
 
 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(inithamm.deo)
-                              build/default/production/principal.o (_HammingInit)
+                              build/default/debug/principal.o (_HammingInit)
 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(vmax.deo)
-                              build/default/production/procesamiento.o (_VectorMax)
+                              build/default/debug/procesamiento.o (_VectorMax)
 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(dowindow.deo)
-                              build/default/production/procesamiento.o (_VectorWindow)
+                              build/default/debug/procesamiento.o (_VectorWindow)
 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(fft.deo)
-                              build/default/production/procesamiento.o (_FFTComplexIP)
+                              build/default/debug/procesamiento.o (_FFTComplexIP)
 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(bitrev.deo)
-                              build/default/production/procesamiento.o (_BitReverseComplex)
+                              build/default/debug/procesamiento.o (_BitReverseComplex)
 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(cplxsqrmag.deo)
-                              build/default/production/procesamiento.o (_SquareMagnitudeCplx)
+                              build/default/debug/procesamiento.o (_SquareMagnitudeCplx)
 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(flt2frct.deo)
                               C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(inithamm.deo) (_Float2Fract)
 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(vmul.deo)
@@ -84,15 +87,15 @@ c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(data
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt_start_mode_normal.Leo)
                               (__crt_start_mode_normal)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
-                              build/default/production/principal.o (___delay32)
+                              build/default/debug/principal.o (___delay32)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(addsf3.eo)
-                              build/default/production/principal.o (___subsf3)
+                              build/default/debug/principal.o (___subsf3)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(ceilf.eo)
                               C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(flt2frct.deo) (_ceilf)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(cosf.eo)
                               C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(inithamm.deo) (_cosf)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(divsf3.eo)
-                              build/default/production/principal.o (___divsf3)
+                              build/default/debug/principal.o (___divsf3)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(fchop.eo)
                               c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(ceilf.eo) (__fchop)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(feqltle.eo)
@@ -100,11 +103,11 @@ c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(feqltle.eo)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(fgtge.eo)
                               C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(flt2frct.deo) (___gtsf2)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
-                              build/default/production/principal.o (_(float, int, long long, short, float, short, int))
+                              build/default/debug/principal.o (_(float, int, long long, short, float, short, int))
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
-                              build/default/production/principal.o (___floatsisf)
+                              build/default/debug/principal.o (___floatsisf)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
-                              build/default/production/interrupciones.o (___floatunsisf)
+                              build/default/debug/interrupciones.o (___floatunsisf)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(floorf.eo)
                               C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(flt2frct.deo) (_floorf)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(fne.eo)
@@ -118,9 +121,9 @@ c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(funpack2.eo)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(futil.eo)
                               c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(addsf3.eo) (__fPropagateNaN)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(logf.eo)
-                              build/default/production/principal.o (_logf)
+                              build/default/debug/principal.o (_logf)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
-                              build/default/production/principal.o (___mulsf3)
+                              build/default/debug/principal.o (___mulsf3)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(sincosf.eo)
                               c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(cosf.eo) (__sincosf)
 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(_frexpf.eo)
@@ -191,8 +194,8 @@ section                    address      alignment gaps    total length  (dec)
 .nbss                        0x800                   0            0x3c  (60)
 .bss                         0x83c                   0           0x210  (528)
 .xbss                        0xc00                   0           0x400  (1024)
-_000000000548FB4061907cdf    0x4000                   0           0x400  (1024)
-_000000000548FBE061907cdf    0x4400                   0           0x400  (1024)
+_000000000546DB406191cb2f    0x4000                   0           0x400  (1024)
+_000000000546DBE06191cb2f    0x4400                   0           0x400  (1024)
 
                  Total "data" memory used (bytes):          0xe4c  (3660) 22%
 
@@ -476,18 +479,21 @@ FUID3            0xf80016           0x000002
 
 Linker script and memory map
 
-LOAD build/default/production/principal.o
-LOAD build/default/production/perifericos.o
-LOAD build/default/production/interrupciones.o
-LOAD build/default/production/procesamiento.o
-LOAD build/default/production/twiddleFactors.o
-LOAD build/default/production/config.o
-LOAD build/default/production/habilitarOscSec.o
-LOAD build/default/production/lcd.o
-LOAD build/default/production/pwm.o
-LOAD build/default/production/retardo.o
+LOAD build/default/debug/principal.o
+LOAD build/default/debug/perifericos.o
+LOAD build/default/debug/interrupciones.o
+LOAD build/default/debug/procesamiento.o
+LOAD build/default/debug/twiddleFactors.o
+LOAD build/default/debug/config.o
+LOAD build/default/debug/habilitarOscSec.o
+LOAD build/default/debug/lcd.o
+LOAD build/default/debug/pwm.o
+LOAD build/default/debug/retardo.o
 LOAD C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a
                     0x0001                  __MPLAB_BUILD = 0x1
+                    0x0001                  __MPLAB_DEBUG = 0x1
+                    0x0001                  __DEBUG = 0x1
+                    0x0001                  __MPLAB_DEBUGGER_SIMULATOR = 0x1
 LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib/dsPIC33F\libp33FJ64GP802-elf.a
 LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libfx-elf.a
                     0xf80000                  __FBS = 0xf80000
@@ -531,7 +537,7 @@ LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr.text        0x0002c8        0x25e build/default/production/interrupciones.o
+ .isr.text        0x0002c8        0x25e build/default/debug/interrupciones.o
                   0x0002c8                  __ADC1Interrupt
                   0x00037a                  __T3Interrupt
                   0x000384                  __T5Interrupt
@@ -637,17 +643,17 @@ usercode
 
 __FBS             0xf80000          0x2
  *(__FBS.sec*)
- __FBS.sec        0xf80000          0x2 /CW/_FBS0©U
+ __FBS.sec        0xf80000          0x2 /CW/_FBS°úA
                   0xf80000                  __FBS.sec
 
 __FSS             0xf80002          0x2
  *(__FSS.sec*)
- __FSS.sec        0xf80002          0x2 /CW/_FSSàXU
+ __FSS.sec        0xf80002          0x2 /CW/_FSSÐA
                   0xf80002                  __FSS.sec
 
 __FGS             0xf80004          0x2
  *(__FGS.sec*)
- __FGS.sec        0xf80004          0x2 /CW/_FGS‰U
+ __FGS.sec        0xf80004          0x2 /CW/_FGS@ŠA
                   0xf80004                  __FGS.sec
 
 __FOSCSEL
@@ -682,69 +688,69 @@ __FUID3
 
 .debug_info       0x000000       0x4965
  *(.debug_info)
- .debug_info      0x000000        0x83f build/default/production/principal.o
- .debug_info      0x00083f       0x1aaa build/default/production/perifericos.o
- .debug_info      0x0022e9        0xdf1 build/default/production/interrupciones.o
- .debug_info      0x0030da        0x377 build/default/production/procesamiento.o
- .debug_info      0x003451        0x165 build/default/production/twiddleFactors.o
- .debug_info      0x0035b6         0xfd build/default/production/config.o
- .debug_info      0x0036b3         0x76 build/default/production/habilitarOscSec.o
- .debug_info      0x003729        0x714 build/default/production/lcd.o
- .debug_info      0x003e3d        0x7b5 build/default/production/pwm.o
- .debug_info      0x0045f2         0x6e build/default/production/retardo.o
+ .debug_info      0x000000        0x83f build/default/debug/principal.o
+ .debug_info      0x00083f       0x1aaa build/default/debug/perifericos.o
+ .debug_info      0x0022e9        0xdf1 build/default/debug/interrupciones.o
+ .debug_info      0x0030da        0x377 build/default/debug/procesamiento.o
+ .debug_info      0x003451        0x165 build/default/debug/twiddleFactors.o
+ .debug_info      0x0035b6         0xfd build/default/debug/config.o
+ .debug_info      0x0036b3         0x76 build/default/debug/habilitarOscSec.o
+ .debug_info      0x003729        0x714 build/default/debug/lcd.o
+ .debug_info      0x003e3d        0x7b5 build/default/debug/pwm.o
+ .debug_info      0x0045f2         0x6e build/default/debug/retardo.o
  .debug_info      0x004660        0x179 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(inithamm.deo)
  .debug_info      0x0047d9        0x18c C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(flt2frct.deo)
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x74c
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x138 build/default/production/principal.o
- .debug_abbrev    0x000138         0xda build/default/production/perifericos.o
- .debug_abbrev    0x000212        0x12f build/default/production/interrupciones.o
- .debug_abbrev    0x000341         0xda build/default/production/procesamiento.o
- .debug_abbrev    0x00041b         0x72 build/default/production/twiddleFactors.o
- .debug_abbrev    0x00048d         0x1f build/default/production/config.o
- .debug_abbrev    0x0004ac         0x14 build/default/production/habilitarOscSec.o
- .debug_abbrev    0x0004c0         0xd9 build/default/production/lcd.o
- .debug_abbrev    0x000599         0xc5 build/default/production/pwm.o
- .debug_abbrev    0x00065e         0x14 build/default/production/retardo.o
+ .debug_abbrev    0x000000        0x138 build/default/debug/principal.o
+ .debug_abbrev    0x000138         0xda build/default/debug/perifericos.o
+ .debug_abbrev    0x000212        0x12f build/default/debug/interrupciones.o
+ .debug_abbrev    0x000341         0xda build/default/debug/procesamiento.o
+ .debug_abbrev    0x00041b         0x72 build/default/debug/twiddleFactors.o
+ .debug_abbrev    0x00048d         0x1f build/default/debug/config.o
+ .debug_abbrev    0x0004ac         0x14 build/default/debug/habilitarOscSec.o
+ .debug_abbrev    0x0004c0         0xd9 build/default/debug/lcd.o
+ .debug_abbrev    0x000599         0xc5 build/default/debug/pwm.o
+ .debug_abbrev    0x00065e         0x14 build/default/debug/retardo.o
  .debug_abbrev    0x000672         0x79 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(inithamm.deo)
  .debug_abbrev    0x0006eb         0x61 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(flt2frct.deo)
 
 .debug_line       0x000000        0xa2b
  *(.debug_line)
- .debug_line      0x000000        0x1de build/default/production/principal.o
- .debug_line      0x0001de        0x173 build/default/production/perifericos.o
- .debug_line      0x000351        0x1c0 build/default/production/interrupciones.o
- .debug_line      0x000511         0xc9 build/default/production/procesamiento.o
- .debug_line      0x0005da         0x7d build/default/production/twiddleFactors.o
- .debug_line      0x000657         0x1a build/default/production/config.o
- .debug_line      0x000671         0x48 build/default/production/habilitarOscSec.o
- .debug_line      0x0006b9        0x150 build/default/production/lcd.o
- .debug_line      0x000809        0x114 build/default/production/pwm.o
- .debug_line      0x00091d         0x39 build/default/production/retardo.o
+ .debug_line      0x000000        0x1de build/default/debug/principal.o
+ .debug_line      0x0001de        0x173 build/default/debug/perifericos.o
+ .debug_line      0x000351        0x1c0 build/default/debug/interrupciones.o
+ .debug_line      0x000511         0xc9 build/default/debug/procesamiento.o
+ .debug_line      0x0005da         0x7d build/default/debug/twiddleFactors.o
+ .debug_line      0x000657         0x1a build/default/debug/config.o
+ .debug_line      0x000671         0x48 build/default/debug/habilitarOscSec.o
+ .debug_line      0x0006b9        0x150 build/default/debug/lcd.o
+ .debug_line      0x000809        0x114 build/default/debug/pwm.o
+ .debug_line      0x00091d         0x39 build/default/debug/retardo.o
  .debug_line      0x000956         0x57 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(inithamm.deo)
  .debug_line      0x0009ad         0x7e C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(flt2frct.deo)
 
 .debug_frame      0x000000        0x4e0
  *(.debug_frame)
- .debug_frame     0x000000         0x36 build/default/production/principal.o
- .debug_frame     0x000036        0x19a build/default/production/perifericos.o
- .debug_frame     0x0001d0        0x126 build/default/production/interrupciones.o
- .debug_frame     0x0002f6         0x48 build/default/production/procesamiento.o
- .debug_frame     0x00033e         0xca build/default/production/lcd.o
- .debug_frame     0x000408         0x48 build/default/production/pwm.o
+ .debug_frame     0x000000         0x36 build/default/debug/principal.o
+ .debug_frame     0x000036        0x19a build/default/debug/perifericos.o
+ .debug_frame     0x0001d0        0x126 build/default/debug/interrupciones.o
+ .debug_frame     0x0002f6         0x48 build/default/debug/procesamiento.o
+ .debug_frame     0x00033e         0xca build/default/debug/lcd.o
+ .debug_frame     0x000408         0x48 build/default/debug/pwm.o
  .debug_frame     0x000450         0x40 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(inithamm.deo)
  .debug_frame     0x000490         0x50 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(flt2frct.deo)
 
 .debug_str        0x000000        0x264
  *(.debug_str)
- .debug_str       0x000000         0x95 build/default/production/principal.o
- .debug_str       0x000095         0xb4 build/default/production/perifericos.o
- .debug_str       0x000149         0x80 build/default/production/interrupciones.o
- .debug_str       0x0001c9         0x58 build/default/production/procesamiento.o
- .debug_str       0x000221         0x1d build/default/production/lcd.o
- .debug_str       0x00023e         0x26 build/default/production/pwm.o
+ .debug_str       0x000000         0x95 build/default/debug/principal.o
+ .debug_str       0x000095         0xb4 build/default/debug/perifericos.o
+ .debug_str       0x000149         0x80 build/default/debug/interrupciones.o
+ .debug_str       0x0001c9         0x58 build/default/debug/procesamiento.o
+ .debug_str       0x000221         0x1d build/default/debug/lcd.o
+ .debug_str       0x00023e         0x26 build/default/debug/pwm.o
 
 .debug_loc
  *(.debug_loc)
@@ -756,19 +762,19 @@ __FUID3
                   0x000000        0x48f
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000        0x141 build/default/production/principal.o
+                  0x000000        0x141 build/default/debug/principal.o
  .debug_pubnames
-                  0x000141        0x120 build/default/production/perifericos.o
+                  0x000141        0x120 build/default/debug/perifericos.o
  .debug_pubnames
-                  0x000261         0xb3 build/default/production/interrupciones.o
+                  0x000261         0xb3 build/default/debug/interrupciones.o
  .debug_pubnames
-                  0x000314         0x6d build/default/production/procesamiento.o
+                  0x000314         0x6d build/default/debug/procesamiento.o
  .debug_pubnames
-                  0x000381         0x25 build/default/production/twiddleFactors.o
+                  0x000381         0x25 build/default/debug/twiddleFactors.o
  .debug_pubnames
-                  0x0003a6         0x79 build/default/production/lcd.o
+                  0x0003a6         0x79 build/default/debug/lcd.o
  .debug_pubnames
-                  0x00041f         0x2c build/default/production/pwm.o
+                  0x00041f         0x2c build/default/debug/pwm.o
  .debug_pubnames
                   0x00044b         0x22 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(inithamm.deo)
  .debug_pubnames
@@ -780,21 +786,21 @@ __FUID3
 .debug_aranges    0x000000         0xf0
  *(.debug_aranges)
  .debug_aranges
-                  0x000000         0x18 build/default/production/principal.o
+                  0x000000         0x18 build/default/debug/principal.o
  .debug_aranges
-                  0x000018         0x18 build/default/production/perifericos.o
+                  0x000018         0x18 build/default/debug/perifericos.o
  .debug_aranges
-                  0x000030         0x18 build/default/production/interrupciones.o
+                  0x000030         0x18 build/default/debug/interrupciones.o
  .debug_aranges
-                  0x000048         0x18 build/default/production/procesamiento.o
+                  0x000048         0x18 build/default/debug/procesamiento.o
  .debug_aranges
-                  0x000060         0x18 build/default/production/habilitarOscSec.o
+                  0x000060         0x18 build/default/debug/habilitarOscSec.o
  .debug_aranges
-                  0x000078         0x18 build/default/production/lcd.o
+                  0x000078         0x18 build/default/debug/lcd.o
  .debug_aranges
-                  0x000090         0x18 build/default/production/pwm.o
+                  0x000090         0x18 build/default/debug/pwm.o
  .debug_aranges
-                  0x0000a8         0x18 build/default/production/retardo.o
+                  0x0000a8         0x18 build/default/debug/retardo.o
  .debug_aranges
                   0x0000c0         0x18 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(inithamm.deo)
  .debug_aranges
@@ -1769,31 +1775,31 @@ LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a
 LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
-OUTPUT(dist/default/production/Trabajo.X.production.elf elf32-pic30)
-LOAD /CW/_FGS‰U
-LOAD /CW/_FSSàXU
-LOAD /CW/_FBS0©U
+OUTPUT(dist/default/debug/Trabajo.X.debug.elf elf32-pic30)
+LOAD /CW/_FGS@ŠA
+LOAD /CW/_FSSÐA
+LOAD /CW/_FBS°úA
 LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
                   0x0000f0        0x556
  .debug_pubtypes
-                  0x0000f0         0x9a build/default/production/principal.o
+                  0x0000f0         0x9a build/default/debug/principal.o
  .debug_pubtypes
-                  0x00018a        0x1fe build/default/production/perifericos.o
+                  0x00018a        0x1fe build/default/debug/perifericos.o
  .debug_pubtypes
-                  0x000388         0xf5 build/default/production/interrupciones.o
+                  0x000388         0xf5 build/default/debug/interrupciones.o
  .debug_pubtypes
-                  0x00047d         0x32 build/default/production/procesamiento.o
+                  0x00047d         0x32 build/default/debug/procesamiento.o
  .debug_pubtypes
-                  0x0004af         0x32 build/default/production/twiddleFactors.o
+                  0x0004af         0x32 build/default/debug/twiddleFactors.o
  .debug_pubtypes
-                  0x0004e1         0x12 build/default/production/config.o
+                  0x0004e1         0x12 build/default/debug/config.o
  .debug_pubtypes
-                  0x0004f3         0x7a build/default/production/lcd.o
+                  0x0004f3         0x7a build/default/debug/lcd.o
  .debug_pubtypes
-                  0x00056d         0x97 build/default/production/pwm.o
+                  0x00056d         0x97 build/default/debug/pwm.o
  .debug_pubtypes
                   0x000604         0x21 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(inithamm.deo)
  .debug_pubtypes
@@ -1802,21 +1808,21 @@ LOAD data_init
 __c30_signature
                   0x000646         0xea
  __c30_signature
-                  0x000646          0x6 build/default/production/principal.o
+                  0x000646          0x6 build/default/debug/principal.o
  __c30_signature
-                  0x00064c          0x6 build/default/production/perifericos.o
+                  0x00064c          0x6 build/default/debug/perifericos.o
  __c30_signature
-                  0x000652          0x6 build/default/production/interrupciones.o
+                  0x000652          0x6 build/default/debug/interrupciones.o
  __c30_signature
-                  0x000658          0x6 build/default/production/procesamiento.o
+                  0x000658          0x6 build/default/debug/procesamiento.o
  __c30_signature
-                  0x00065e          0x6 build/default/production/twiddleFactors.o
+                  0x00065e          0x6 build/default/debug/twiddleFactors.o
  __c30_signature
-                  0x000664          0x6 build/default/production/config.o
+                  0x000664          0x6 build/default/debug/config.o
  __c30_signature
-                  0x00066a          0x6 build/default/production/lcd.o
+                  0x00066a          0x6 build/default/debug/lcd.o
  __c30_signature
-                  0x000670          0x6 build/default/production/pwm.o
+                  0x000670          0x6 build/default/debug/pwm.o
  __c30_signature
                   0x000676          0x6 C:\Program Files\Microchip\xc16\v1.70\lib\libdsp-elf.a(inithamm.deo)
  __c30_signature
@@ -1881,7 +1887,7 @@ __c30_signature
                   0x00072a          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(fmodrem.eo)
 
 .nbss               0x0800         0x3c
- .nbss              0x0800         0x28 build/default/production/principal.o
+ .nbss              0x0800         0x28 build/default/debug/principal.o
                     0x0800                  _procesar
                     0x0802                  _segundos
                     0x0804                  _contPruebas
@@ -1900,104 +1906,104 @@ __c30_signature
                     0x0824                  _actualizarTiempo
                     0x0825                  _decremento
                     0x0826                  _incrementos
- .nbss              0x0828          0xc build/default/production/interrupciones.o
+ .nbss              0x0828          0xc build/default/debug/interrupciones.o
                     0x0828                  _contCH0
                     0x082a                  _contCH1
                     0x082c                  _adCH
                     0x082e                  _voltaje
                     0x0832                  _chptr
- .nbss              0x0834          0x6 build/default/production/procesamiento.o
+ .nbss              0x0834          0x6 build/default/debug/procesamiento.o
                     0x0834                  _peakFrequencyBin
                     0x0836                  _peakFrequency
  .nbss              0x083a          0x2 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a(errno.eo)
                     0x083a                  _errno
 
 .xbss               0x0c00        0x400
- .xbss              0x0c00        0x400 build/default/production/principal.o
+ .xbss              0x0c00        0x400 build/default/debug/principal.o
                     0x0c00                  _hamming
 
-_000000000548FB4061907cdf
+_000000000546DB406191cb2f
                     0x4000        0x400
- _000000000548FB4061907cdf
-                    0x4000        0x400 build/default/production/principal.o
+ _000000000546DB406191cb2f
+                    0x4000        0x400 build/default/debug/principal.o
                     0x4000                  _valCH0
 
-_000000000548FBE061907cdf
+_000000000546DBE06191cb2f
                     0x4400        0x400
- _000000000548FBE061907cdf
-                    0x4400        0x400 build/default/production/principal.o
+ _000000000546DBE06191cb2f
+                    0x4400        0x400 build/default/debug/principal.o
                     0x4400                  _valCH1
 
 .bss                0x083c        0x210
- .bss               0x083c        0x200 build/default/production/procesamiento.o
+ .bss               0x083c        0x200 build/default/debug/procesamiento.o
                     0x083c                  _output
- .bss               0x0a3c         0x10 build/default/production/principal.o
+ .bss               0x0a3c         0x10 build/default/debug/principal.o
                     0x0a3c                  _valorfaa
                     0x0a44                  _tiempo
 
 .ivt._ADC1Interrupt
                   0x00002e          0x2
  .ivt._ADC1Interrupt
-                  0x00002e          0x2 build/default/production/interrupciones.o
+                  0x00002e          0x2 build/default/debug/interrupciones.o
 
 .ivt._T3Interrupt
                   0x000024          0x2
  .ivt._T3Interrupt
-                  0x000024          0x2 build/default/production/interrupciones.o
+                  0x000024          0x2 build/default/debug/interrupciones.o
 
 .ivt._T5Interrupt
                   0x00004c          0x2
  .ivt._T5Interrupt
-                  0x00004c          0x2 build/default/production/interrupciones.o
+                  0x00004c          0x2 build/default/debug/interrupciones.o
 
 .ivt._U1TXInterrupt
                   0x00002c          0x2
  .ivt._U1TXInterrupt
-                  0x00002c          0x2 build/default/production/interrupciones.o
+                  0x00002c          0x2 build/default/debug/interrupciones.o
 
 .ivt._T2Interrupt
                   0x000022          0x2
  .ivt._T2Interrupt
-                  0x000022          0x2 build/default/production/interrupciones.o
+                  0x000022          0x2 build/default/debug/interrupciones.o
 
 .ivt._T1Interrupt
                   0x00001a          0x2
  .ivt._T1Interrupt
-                  0x00001a          0x2 build/default/production/interrupciones.o
+                  0x00001a          0x2 build/default/debug/interrupciones.o
 
 .config_JTAGEN    0xf8000e          0x2
  .config_JTAGEN
-                  0xf8000e          0x2 build/default/production/config.o
+                  0xf8000e          0x2 build/default/debug/config.o
 
 .config_ALTI2C    0xf8000c          0x2
  .config_ALTI2C
-                  0xf8000c          0x2 build/default/production/config.o
+                  0xf8000c          0x2 build/default/debug/config.o
 
 .config_FWDTEN    0xf8000a          0x2
  .config_FWDTEN
-                  0xf8000a          0x2 build/default/production/config.o
+                  0xf8000a          0x2 build/default/debug/config.o
 
 .config_FCKSM     0xf80008          0x2
- .config_FCKSM    0xf80008          0x2 build/default/production/config.o
+ .config_FCKSM    0xf80008          0x2 build/default/debug/config.o
 
 .config_IESO      0xf80006          0x2
- .config_IESO     0xf80006          0x2 build/default/production/config.o
+ .config_IESO     0xf80006          0x2 build/default/debug/config.o
 
 .const              0x9000        0x266 load address 0x001000  
- .const             0x9000        0x200 build/default/production/twiddleFactors.o
+ .const             0x9000        0x200 build/default/debug/twiddleFactors.o
                     0x9000                  _twiddleFactors
- .const             0x9200         0x58 build/default/production/principal.o
- .const             0x9258          0xe build/default/production/interrupciones.o
+ .const             0x9200         0x58 build/default/debug/principal.o
+ .const             0x9258          0xe build/default/debug/interrupciones.o
 
 .text             0x001266        0x508
- .text            0x001266        0x330 build/default/production/principal.o
+ .text            0x001266        0x330 build/default/debug/principal.o
                   0x001266                  _main
- .text            0x001596        0x1d8 build/default/production/procesamiento.o
+ .text            0x001596        0x1d8 build/default/debug/procesamiento.o
                   0x001596                  _procesarMuestras
                   0x0016f6                  _validarMuestras
 
 .text             0x000e36        0x14a
- .text            0x000e36        0x14a build/default/production/perifericos.o
+ .text            0x000e36        0x14a build/default/debug/perifericos.o
                   0x000e36                  _iniPerifericos
                   0x000e58                  _iniTimer1
                   0x000e6e                  _iniTimer3
@@ -2015,7 +2021,7 @@ _000000000548FBE061907cdf
                   0x000f78                  _desactivaUART
 
 .text             0x00176e        0x112
- .text            0x00176e        0x112 build/default/production/lcd.o
+ .text            0x00176e        0x112 build/default/debug/lcd.o
                   0x00176e                  _ini_lcd
                   0x00179a                  _comando_lcdNoBF
                   0x0017c8                  _comando_lcd
@@ -2025,7 +2031,7 @@ _000000000548FBE061907cdf
                   0x001876                  _limpiar_lcd
 
 .text             0x000f80         0x52
- .text            0x000f80         0x52 build/default/production/pwm.o
+ .text            0x000f80         0x52 build/default/debug/pwm.o
                   0x000f80                  _iniPWM
                   0x000fc6                  _activarPWM
 
@@ -2037,9 +2043,9 @@ _000000000548FBE061907cdf
                   0x000fd2                  ___delay32
 
 .text             0x0018b8         0x1a
- .text            0x0018b8         0x1a build/default/production/habilitarOscSec.o
+ .text            0x0018b8         0x1a build/default/debug/habilitarOscSec.o
                   0x0018b8                  _enLPOSC
 
 .text             0x000fee          0xc
- .text            0x000fee          0xc build/default/production/retardo.o
+ .text            0x000fee          0xc build/default/debug/retardo.o
                   0x000fee                  _retardo15ms

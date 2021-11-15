@@ -19,5 +19,6 @@ extern "C" {
 }
 #endif
 void procesarMuestras( char canal );
+void validarMuestras( void );
 #endif	/* PROCESAMIENTO_H */
 
