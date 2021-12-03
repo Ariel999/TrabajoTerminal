@@ -32,6 +32,10 @@ int eliminarMuestra = 0;
 char tiempo[7];
 char dmin, umin, dseg, useg, actualizarTiempo, decremento;
 int incrementos;
+float corriente = 0;
+char detenerCorriente;
+char valorCorriente[7];
+float limCorriente = 0;
 
 int main(int argc, char** argv) {
     
@@ -47,9 +51,10 @@ int main(int argc, char** argv) {
 	//Habilitaci?n de puertos
 	TRISA = 0x0001;         //AN0 se configura como entrada
     TRISB = 0x0002;         //AN3 se configura como entrada
-    TRISBbits.TRISB15 = 1;
+    TRISBbits.TRISB15 = 1;  //AN9 se configura como entrada
     //PORTB = 0x01;           //RB0 se configura como salida
-    TRISAbits.TRISA1=1;
+    TRISAbits.TRISA1=1;     //Entrada Push Button
+    TRISAbits.TRISA2=1;     //Entrada selección de corriente
     /*PPSUnLock;
     iPPSOutput(OUT_PIN_PPS_RP0, OUT_FN_PPS_U1TX);
     PPSLock;*/
@@ -62,6 +67,7 @@ int main(int argc, char** argv) {
     int i;
     int contador=0;
     int muestrasConRuido = 0;
+    detenerCorriente = 0;
     while(1) 
     {
         if(PORTAbits.RA1 == 1 && estaActivo == 0)
@@ -147,10 +153,18 @@ int main(int argc, char** argv) {
                     comando_lcd(0x0080); //Poner cursor en posc 0
                     string_lcd("Preparando tDCS");
                     
-                    LATBbits.LATB15=1;
+                    LATBbits.LATB5=1;
                     __delay_ms(30000);
-                    LATBbits.LATB15=0;
+                    LATBbits.LATB5=0;
                     
+                    if( PORTAbits.RA2 == 0 )
+                    {
+                        limCorriente=2;
+                    }
+                    else
+                    {
+                        limCorriente=1;
+                    }
                     //Inicializar tiempo
                     incrementos=0;
                     decremento=0;
@@ -168,6 +182,7 @@ int main(int argc, char** argv) {
                     
                     activarPWM();
                     activaPerifericosTimer1();
+                    activaADC();
                     actualizarTiempo=0;
                 }
                 else
@@ -205,15 +220,44 @@ int main(int argc, char** argv) {
         {
             if(actualizarTiempo)
             {
-                comando_lcd(0x00C5); //Poner cursor en posc 45 - fila debajo posc 5
+                comando_lcd(0x00C1); //Poner cursor en posc 45 - fila debajo posc 5
                 tiempo[0]=dmin+0x0030;
                 tiempo[1]=umin+0x0030;
                 tiempo[3]=dseg+0x0030;
                 tiempo[4]=useg+0x0030;
                 string_lcd(tiempo);
+                comando_lcd(0x00C9);
+                
+                if(corriente > 0)
+                {
+                    valorCorriente[0]=(int)corriente + 0x0030;
+                }
+                else
+                {
+                    valorCorriente[0]=0 + 0x0030;
+                }
+                valorCorriente[1]='.';
+                for( i = 0; i<2 ; i++)
+                {
+                    corriente*=10;
+                    valorCorriente[i+2]=(int)corriente  + 0x0030;
+                    corriente -=(int)corriente;
+                }
+                valorCorriente[4]='m';
+                valorCorriente[5]='A';
+                valorCorriente[6]=0;
                 actualizarTiempo=0;
             }
             Nop();
+        }
+        //if(PORTAbits.RA2 == )
+        if(detenerCorriente)
+        {
+            //Funcion de detención       
+        }
+        if(PORTAbits.RA1 == 1 && tdcs == 1)
+        {
+            //Funcion de detención
         }
     }
     return (EXIT_SUCCESS);

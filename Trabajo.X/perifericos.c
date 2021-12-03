@@ -71,7 +71,7 @@ void iniADCtDCS( void )
     AD1CHS0bits.CH0SA = 0b01001;
     AD1CHS0bits.CH0SB = 0b01001;
     
-    AD1PCFGL = 0xFFFE;              //Habilita AN0 y AN3 como analogicos
+    AD1PCFGLbits.PCFG9 = 0;              //Habilita AN9 como analogico
     AD1CON1bits.AD12B = 0;          //Habilita el convertidor en 10 bits
     AD1CON1bits.SIMSAM = 0;         //Habilita el muestreo simultaneo
     AD1CON1bits.ASAM = 0;           //Muestreo comienza cuando se habilita el bit SAMP

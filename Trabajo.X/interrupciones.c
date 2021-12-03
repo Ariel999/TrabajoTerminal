@@ -9,7 +9,9 @@
 int contCH0 = 0, contCH1 = 0;
 char adCH = 0;
 extern int tdcs;
-float voltaje = 0;
+extern float corriente;
+extern char detenerCorriente;
+extern float limCorriente;
 
 extern fractcomplex valCH0[FFT_BLOCK_LENGTH]
 __attribute__ ((eds, space(ymemory), aligned (FFT_BLOCK_LENGTH * 2 *2)));
@@ -25,7 +27,17 @@ extern fractional output[FFT_BLOCK_LENGTH];
 void __attribute__((interrupt, no_auto_psv))_ADC1Interrupt(void){
     if( tdcs == 1)
     {
-        voltaje = ADC1BUF0 * 0.00322265625;
+        corriente = ADC1BUF0 * 0.00322265625;
+        
+        if(corriente >= limCorriente)
+        {
+            limpiar_lcd();
+            comando_lcd(0x0080); //Poner cursor en posc 0
+            string_lcd("MaxCor...");
+            detenerCorriente = 1;
+            tdcs = 0;
+            desactivaADC();
+        }
     }
     else
     {
@@ -128,7 +140,7 @@ extern char dmin, umin, dseg, useg, actualizarTiempo, decremento;
 extern int incrementos;
 void __attribute__ ((__interrupt__, no_auto_psv)) _T1Interrupt(void){
     
-    LATBbits.LATB15=~LATBbits.LATB15;
+    LATBbits.LATB5=~LATBbits.LATB5;
     if(incrementos!=61){
        incrementos++;
        OC1RS +=69;
