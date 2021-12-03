@@ -68,6 +68,8 @@ void iniADC( void )
 void iniADCtDCS( void )
 {
     AD1CHS0=0x0000;                 //Se selecciona AN0 para el CH0
+    AD1CHS0bits.CH0SA = 0b01001;
+    AD1CHS0bits.CH0SB = 0b01001;
     
     AD1PCFGL = 0xFFFE;              //Habilita AN0 y AN3 como analogicos
     AD1CON1bits.AD12B = 0;          //Habilita el convertidor en 10 bits

@@ -47,6 +47,7 @@ int main(int argc, char** argv) {
 	//Habilitaci?n de puertos
 	TRISA = 0x0001;         //AN0 se configura como entrada
     TRISB = 0x0002;         //AN3 se configura como entrada
+    TRISBbits.TRISB15 = 1;
     //PORTB = 0x01;           //RB0 se configura como salida
     TRISAbits.TRISA1=1;
     /*PPSUnLock;
@@ -140,6 +141,7 @@ int main(int argc, char** argv) {
                     iniTimer1();
                     iniInterrupcionesTimer1();
                     iniPWM();
+                    iniADCtDCS();
                     
                     limpiar_lcd();
                     comando_lcd(0x0080); //Poner cursor en posc 0
