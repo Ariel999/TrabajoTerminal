@@ -33,7 +33,8 @@ void __attribute__((interrupt, no_auto_psv))_ADC1Interrupt(void){
         {
             limpiar_lcd();
             comando_lcd(0x0080); //Poner cursor en posc 0
-            string_lcd("MaxCor...");
+            string_lcd("MaxCte...");
+            
             detenerCorriente = 1;
             tdcs = 0;
             desactivaADC();

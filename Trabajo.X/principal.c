@@ -151,11 +151,23 @@ int main(int argc, char** argv) {
                     
                     limpiar_lcd();
                     comando_lcd(0x0080); //Poner cursor en posc 0
+                    string_lcd("Activa tDCS");
+                    
+                    __delay_ms(10000);
+                    
+                    limpiar_lcd();
+                    comando_lcd(0x0080); //Poner cursor en posc 0
                     string_lcd("Preparando tDCS");
                     
                     LATBbits.LATB5=1;
-                    __delay_ms(30000);
+                    __delay_ms(10000);
                     LATBbits.LATB5=0;
+                    limpiar_lcd();
+                    comando_lcd(0x0080); //Poner cursor en posc 0
+                    string_lcd("   Seleccione   ");
+                    comando_lcd(0x00C0); //Poner cursor en posc 0
+                    string_lcd("  cte. deseada  ");
+                    __delay_ms(10000);
                     
                     if( PORTAbits.RA2 == 0 )
                     {
@@ -191,7 +203,7 @@ int main(int argc, char** argv) {
                         limpiar_lcd();
                         comando_lcd(0x0080); //Poner cursor en posc 0
                         string_lcd("No Activa tDCS");
-                        __delay_ms(1000);
+                        __delay_ms(5000);
                     }
                     
                     activaADC();
@@ -231,6 +243,7 @@ int main(int argc, char** argv) {
                 if(corriente > 0)
                 {
                     valorCorriente[0]=(int)corriente + 0x0030;
+                    corriente -=(int)corriente;
                 }
                 else
                 {
@@ -246,6 +259,7 @@ int main(int argc, char** argv) {
                 valorCorriente[4]='m';
                 valorCorriente[5]='A';
                 valorCorriente[6]=0;
+                string_lcd(valorCorriente);
                 actualizarTiempo=0;
             }
             Nop();
@@ -253,7 +267,12 @@ int main(int argc, char** argv) {
         //if(PORTAbits.RA2 == )
         if(detenerCorriente)
         {
-            //Funcion de detención       
+            //Funcion de detención
+            __delay_ms(90000);
+            limpiar_lcd();
+            comando_lcd(0x0080); //Poner cursor en posc 0
+            string_lcd("Deteniendo tDCS");
+            __delay_ms(1000);
         }
         if(PORTAbits.RA1 == 1 && tdcs == 1)
         {
